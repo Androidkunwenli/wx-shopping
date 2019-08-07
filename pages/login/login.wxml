@@ -1,0 +1,4 @@
+<view class="container">
+  <!-- 登录组件 https://developers.weixin.qq.com/miniprogram/dev/api/wx.getUserInfo.html -->  
+  <button open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">授权登录</button>
+</view>

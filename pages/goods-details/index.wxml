@@ -1,0 +1,40 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+  <view class="swiper-container">
+    <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
+  </view>
+  <view class="goods-number">
+    <view class="goods-number-row" >
+      <view class="goods-price">¥{{selectSizePrice}}</view>
+      <view class="goods-price-line" style="text-decoration:line-through;">¥ {{oldprice}}</view>
+    </view>
+     <view class="goods-sale" >
+      <view class="goods-price">已售{{sale}}份/剩余{{total}}份</view>
+    </view>
+  </view>
+  <view class="goods-info">
+    <view class="goods-title">{{commodityTitle}}</view>
+  </view>
+  <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="bindGuiGeTap">
+    {{selectSize}}
+  </view>
+  <view class="goods-des-info">
+    <view class="label-title">商品详情</view>
+    <view class="goods-text">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+  <view class="footer-box">
+    <view class="contact">
+      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
+      客服
+    </view>
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <view class="shop-num">({{shopNum}})</view>
+      购物车
+    </view>
+    <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
+    <view class="now-buy" bindtap="tobuy">立即购买</view>
+  </view>
+  
+</view>
