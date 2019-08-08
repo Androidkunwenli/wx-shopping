@@ -60,7 +60,8 @@ Page({
                     wx.hideLoading();
                     // 7.小程序存储skey（自定义登录状态）到本地
                     wx.setStorageSync('userInfo', userInfo);
-                    wx.setStorageSync('skey', res.data.data);
+                    wx.setStorageSync('skey', res.data.data.skey);
+                    wx.setStorageSync('id', res.data.data.id);
                     wx.switchTab({
                       url: '/pages/index/index'
                     })

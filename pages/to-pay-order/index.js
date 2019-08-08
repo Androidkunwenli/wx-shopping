@@ -109,7 +109,7 @@ Page({
     });
     var allGoodsAndYunPrice = 0;
     for (var x in shopList) {
-      allGoodsAndYunPrice += shopList[x].price;
+      allGoodsAndYunPrice += (shopList[x].price * shopList[x].num);
     }
     that.setData({
       allGoodsAndYunPrice: allGoodsAndYunPrice,

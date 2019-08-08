@@ -146,30 +146,39 @@ Page({
     // 获取订单列表
     wx.showLoading();
     var that = this;
-    var postData = {
-      userid: "1"
-    };
-    postData.type = that.data.currentType;
     this.getOrderStatistics();
+    var type = ""
+    var statusStr = ""
+    if (that.data.currentType == 0) {
+      type = "";
+    } else if (that.data.currentType == 1) {
+      type = 0;
+    } else if (that.data.currentType == 2) {
+      type = 1;
+    } else if (that.data.currentType == 3) {
+      type = 2;
+    }
     wx.request({
+      url: app.config.url + '/apiorder/orderlist',
       method: 'POST',
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/x-www-form-urlencoded'  
       },
-      url: app.config.url + '/apiorder/orderlist',
-      data: postData,
+      data: {
+        userid: wx.getStorageSync("id"),
+        type: type,
+      },
       success: (res) => {
         wx.hideLoading();
-        if (res.data.code == 0) {
+        if (res.data.key == 200) {
+          var data = res.data.data;
           that.setData({
-            orderList: res.data.data.orderList,
-            logisticsMap: res.data.data.logisticsMap,
-            goodsMap: res.data.data.goodsMap
+            orderList: data,
+            goodsMap: data.goods
           });
         } else {
           this.setData({
             orderList: null,
-            logisticsMap: {},
             goodsMap: {}
           });
         }
