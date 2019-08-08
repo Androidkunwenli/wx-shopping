@@ -4,16 +4,6 @@ var app = getApp()
 Page({
   data: {
     goodsList: [],
-    isNeedLogistics: 0, // 是否需要物流信息
-    allGoodsPrice: 0,
-    yunPrice: 0,
-    allGoodsAndYunPrice: 0,
-    goodsJsonStr: "",
-    orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
-    hasNoCoupons: true,
-    coupons: [],
-    youhuijine: 0, //优惠券金额
-    curCoupon: null // 当前选择使用的优惠券
   },
   onShow: function() {
     var that = this;
@@ -47,7 +37,11 @@ Page({
     //获取默认地址
     that.getSelectpoint()
   },
-  getSelectpoint:function(){
+  getSelectpoint: function() {
+    wx.showLoading({
+      title: '地址加载中..',
+    })
+    var that = this;
     wx.request({
       url: app.config.url + "/apipoint/selectpoint",
       method: "POST",
@@ -59,7 +53,12 @@ Page({
       },
       success: (res) => {
         if (res.data.key == 200) {
-          
+          that.setData({
+            curAddressData: res.data.data
+          })
+          wx.hideLoading()
+        } else {
+
         }
       }
     })
@@ -102,13 +101,10 @@ Page({
       }
     })
   },
-
-  onLoad: function(e) {
-    var that = this;
-    //显示收货地址标识
-    that.setData({
-      isNeedLogistics: 1,
-      orderType: e.orderType
-    });
-  },
+  //点击选择地址
+  selectAddress: function(e) {
+    wx.navigateTo({
+      url: '/pages/select-address/index'
+    })
+  }
 })

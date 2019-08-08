@@ -7,11 +7,6 @@
   <view class="my-item">
     <navigator url="/pages/order-list/index" hover-class="navigator-hover">我的订单</navigator>
   </view>
-
-  <view style="height:20rpx;background: #f1f1f1;width:100%;"></view>
-  <view class="about" bindtap="receivingAddress">
-    收获地址
-  </view>
   <view style="height:20rpx;background: #f1f1f1;width:100%;"></view>
   <view class="about" bindtap="aboutUs">
     关于我们

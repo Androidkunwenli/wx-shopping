@@ -1,11 +1,8 @@
 <view class="container">
      <form bindsubmit="createOrder" report-submit="true">
-     <view class="address-box" wx:if="{{isNeedLogistics > 0}}">
-        <view class="add-address" hidden="{{curAddressData}}">
-            <view class="title" bindtap="addAddress">新增收货地址</view>
-        </view>
-        <view class="show-address" hidden="{{!curAddressData}}" bindtap="~">
-            <view class="name-tel">{{curAddressData.linkMan}}  {{curAddressData.mobile}}</view>
+     <view class="address-box">
+        <view class="show-address" hidden="{{!curAddressData}}" bindtap="selectAddress">
+            <view class="name-tel">{{curAddressData.name}}  {{curAddressData.mobile}}</view>
             <view class="addr-text">{{curAddressData.address}}</view>
         </view>
      </view>
@@ -31,7 +28,7 @@
         <view class="row-box" wx:if="{{isNeedLogistics > 0}}">
             <view class="row-label">配送方式</view>
             <view class="right-text" wx:if="{{yunPrice > 0}}">快递</view>
-            <view class="right-text" wx:if="{{yunPrice == 0}}">包邮</view>
+            <view class="right-text" wx:if="{{yunPrice == 0}}">自取</view>
         </view>
         <view class="row-box">
             <view class="row-label">备注</view>
@@ -40,23 +37,9 @@
             </view>
         </view>
      </view>
-     <view class="goods-info">
-        <view class="row-box" wx:if="{{isNeedLogistics > 0 && yunPrice > 0}}">
-            <view class="row-label">商品金额</view>
-            <view class="right-text">¥ {{allGoodsPrice}}</view>
-        </view>
-        <view class="row-box" wx:if="{{isNeedLogistics > 0 && yunPrice > 0}}">
-            <view class="row-label">运费</view>
-            <view class="right-text">+ ¥ {{yunPrice}}</view>
-        </view>
-        <view class="row-box" wx:if="{{!hasNoCoupons}}">
-            <view class="row-label">优惠券</view>
-            <view class="right-text">- ¥ {{youhuijine}}</view>
-        </view>
-     </view>
      <view class="jiesuan-box">
         <view class="left-price">
-            <view class="total">合计：¥ {{allGoodsAndYunPrice - youhuijine}}</view>
+            <view class="total">合计：¥ {{allGoodsAndYunPrice}}</view>
         </view>
         <button class="to-pay-btn" formType="submit">提交订单</button>
     </view>
