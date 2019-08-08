@@ -37,4 +37,9 @@ Page({
       showCancel:false
     })
   },
+  receivingAddress:function(e){
+    wx.navigateTo({
+      url: '/pages/select-address/index'
+    })
+  },
 })
