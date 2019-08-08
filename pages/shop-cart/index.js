@@ -168,7 +168,7 @@ Page({
     var tempNumber = 0;
     shopCarInfo.shopList = list;
     for (var i = 0; i < list.length; i++) {
-      tempNumber = tempNumber + list[i].number
+      tempNumber = tempNumber + list[i].num
     }
     shopCarInfo.shopNum = tempNumber;
     wx.setStorage({
@@ -197,8 +197,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     var list = this.data.goodsList.list;
     if (index !== "" && index != null) {
-      if (list[parseInt(index)].number < 10) {
-        list[parseInt(index)].number++;
+      if (list[parseInt(index)].num < 10) {
+        list[parseInt(index)].num++;
         this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), list);
       }
     }
@@ -207,8 +207,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     var list = this.data.goodsList.list;
     if (index !== "" && index != null) {
-      if (list[parseInt(index)].number > 1) {
-        list[parseInt(index)].number--;
+      if (list[parseInt(index)].num > 1) {
+        list[parseInt(index)].num--;
         this.setGoodsList(this.getSaveHide(), this.totalPrice(), this.allSelect(), this.noSelect(), list);
       }
     }

@@ -59,10 +59,8 @@ Page({
                   if (res.data.key == 200) {
                     wx.hideLoading();
                     // 7.小程序存储skey（自定义登录状态）到本地
-                    var userId = res.data.data
-                    app.config.userId = userId
                     wx.setStorageSync('userInfo', userInfo);
-                    wx.setStorageSync('userId', userId);
+                    wx.setStorageSync('skey', res.data.data);
                     wx.switchTab({
                       url: '/pages/index/index'
                     })
