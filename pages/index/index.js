@@ -95,8 +95,8 @@ Page({
           loadingMoreHidden:true
         });
         var goods = [];
-        for(var i=0;i<res.data.data.goods.length;i++){
-          goods.push(res.data.data.goods[i]);
+        for(var i=0;i<res.data.data.length;i++){
+          goods.push(res.data.data[i]);
         }
         that.setData({
           goods:goods,
