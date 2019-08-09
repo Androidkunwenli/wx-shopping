@@ -12,9 +12,6 @@ Page({
 	},	
   onShow() {
     this.getUserInfo();
-    this.setData({
-      version: app.globalData.version
-    });
   },	
   getUserInfo: function (cb) {
       var that = this

@@ -39,7 +39,7 @@ Page({
   },
   getSelectpoint: function() {
     wx.showLoading({
-      title: '地址加载中..',
+      title: '取货地址加载中..',
     })
     var that = this;
     wx.request({
@@ -65,6 +65,10 @@ Page({
   },
   createOrder: function(e) {
     var that = this;
+    var remark = ""; // 备注信息
+    if (e) {
+      remark = e.detail.value.remark; // 备注信息
+    }
     var goodsList = this.data.goodsList;
     var goodList = [];
     for (var x in goodsList) {
@@ -77,6 +81,7 @@ Page({
     var postData = {
       goods: goodList,
       userid: 1,
+      note: remark,
     }
     wx.request({
       url: app.config.url + '/apiorder/addorder',

@@ -74,7 +74,6 @@ Page({
     var that = this
     that.getGoodsList(0);
     that.setData({
-      categories: categories,
       activeCategoryId: 0
     });
   },
@@ -95,8 +94,9 @@ Page({
           loadingMoreHidden:true
         });
         var goods = [];
-        for(var i=0;i<res.data.data.length;i++){
-          goods.push(res.data.data[i]);
+        var data = res.data.data;
+        for (var item in data){
+          goods.push(data[i]);
         }
         that.setData({
           goods:goods,
