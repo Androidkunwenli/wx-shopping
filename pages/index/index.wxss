@@ -74,43 +74,98 @@
 
 .goods-box {
   width: 100%;
-  height: 472rpx;
+  height: 572rpx;
   background-color: #fff;
   overflow: hidden;
-  margin-bottom: 24rpx;
+  margin: 20rpx 0;
 }
 
 .goods-box .img-box {
   width: 100%;
   height: 339rpx;
   overflow: hidden;
+    display:flex;                   
+ justify-content: center;
 }
 
-.goods-box .img-box image {
-  width: 100%;
-  height: 339rpx;
-}
+.goods-box .img-box .image {
+  width: 95%;
+  height: 90%;
+  border-radius: 30rpx;
+  border: 10rpx solid#FFA500;
 
+}
+.txt_con{
+  margin-left: 25rpx;
+}
+.yushou{
+  width:65%;
+  font-size:30rpx;
+  color:#e64340;
+}
+.tihuo{
+   width:280rpx;
+  font-size:30rpx;
+  color:#e64340;
+}
+.st{
+  display: flex;
+  margin-top: 5rpx;
+}
+.sale{
+ font-size:30rpx;
+}
+.jiage{
+   display: flex;
+  justify-self: left;
+  position: relative;
+}
+.carimg{
+  width: 65rpx;
+  height: 65rpx;
+  margin-right: 20rpx;
+   position: absolute;
+  z-index: 999;
+  right: 0
+}
+.num{
+  border: 1rpx solid red;
+ border-radius: 0px;
+ border-bottom-left-radius: 35%;
+ border-top-left-radius: 35%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 100rpx;
+  margin-right:50rpx;
+  height: 58rpx;
+  margin-top:2rpx;
+}
 .goods-box .goods-title {
   width: 650rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 24rpx;
-  padding: 24rpx 0 0rpx 0;
-  color: #000;
-  margin-left: 24rpx;
+  color: #4d4c4c;
+  font-weight: 600;
+  font-size: 35rpx;
+  letter-spacing:2rpx;
+  margin: 0 0 10rpx 0;
 }
 
 .goods-box .goods-price {
-  width: 280rpx;
+  width: 85%;
   overflow: hidden;
-  font-size: 24rpx;
-  padding: 24rpx 0;
   color: #e64340;
-  margin-left: 24rpx;
+  font-weight:600;
+  letter-spacing:2rpx;
+  margin: 15rpx 0 0 0;
+  font-size: 35rpx;
 }
-
+.goods-price text{
+  text-decoration:line-through;
+  color: #4d4c4c;
+}
 .no-more-goods {
   text-align: center;
   font-size: 24rpx;
@@ -208,21 +263,93 @@
 
 .Title{
    height: 100rpx;
-   margin-left: 30rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   background-color: 	#FFA500;
 }
 .pointa{
-  width: 50%;
-  float: left;
+  width: 45%;
+  font-size: 30rpx;
+  padding-left: 10rpx;
 }
 .pointa image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius:50%;
 }
-.pointb image{
-  width: 50rpx;
-  height: 50rpx;
+.wenzi{
+  padding-left: 10px;
+  font-size: 12px;
 }
 .pointb{
-  width: 50%;
-  float: right;
+  width: 55%;
+}
+.weui-search-bar {
+  position: relative;
+  padding: 8px 0 10px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+}
+.weui-icon-search {
+  margin-right: 8px;
+  font-size: inherit;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #fff;
+  border: 1rpx solid #e6e6ea;
+}
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 10px;
+}
+
+.weui-icon-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 8px;
+  font-size: 0;
+}
+.weui-search-bar__label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 3px;
+  text-align: center;
+  color: #9b9b9b;
+  background: #fff;
+  line-height: 28px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #DC3C24;
+  white-space: nowrap;
 }
