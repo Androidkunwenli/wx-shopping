@@ -204,3 +204,25 @@
 .goods-price-oldprice {
   margin: 10rpx 20rpx 10rpx;
 }
+
+
+.Title{
+   height: 100rpx;
+   margin-left: 30rpx;
+}
+.pointa{
+  width: 50%;
+  float: left;
+}
+.pointa image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.pointb image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.pointb{
+  width: 50%;
+  float: right;
+}

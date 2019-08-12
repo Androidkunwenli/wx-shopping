@@ -62,6 +62,7 @@ Page({
                     wx.setStorageSync('userInfo', userInfo);
                     wx.setStorageSync('skey', res.data.data.skey);
                     wx.setStorageSync('id', res.data.data.id);
+                    wx.setStorageSync('openid', res.data.data.openid);
                     wx.switchTab({
                       url: '/pages/index/index'
                     })

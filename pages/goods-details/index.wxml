@@ -4,11 +4,11 @@
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
   </view>
   <view class="goods-number">
-    <view class="goods-number-row" >
+    <view class="goods-number-row">
       <view class="goods-price">¥{{selectSizePrice}}</view>
       <view class="goods-price-line" style="text-decoration:line-through;">¥ {{oldprice}}</view>
     </view>
-     <view class="goods-sale" >
+    <view class="goods-sale">
       <view class="goods-price">已售{{sale}}份/剩余{{total}}份</view>
     </view>
   </view>
@@ -36,5 +36,5 @@
     <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
     <view class="now-buy" bindtap="tobuy">立即购买</view>
   </view>
-  
+
 </view>

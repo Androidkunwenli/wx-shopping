@@ -64,6 +64,9 @@ Page({
     })
   },
   createOrder: function(e) {
+    wx.showLoading({
+      title: '提交订单中...',
+    })
     var that = this;
     var remark = ""; // 备注信息
     if (e) {
@@ -80,7 +83,7 @@ Page({
     }
     var postData = {
       goods: goodList,
-      userid: 1,
+      userid: wx.getStorageSync("id"),
       note: remark,
     }
     wx.request({
@@ -91,20 +94,59 @@ Page({
       },
       data: postData, // 设置请求的 参数
       success: (res) => {
-        console.log("提交订单" + res.data.data)
-        if (res.data.code == 200) {
-          wx.requestPayment({
-            timeStamp: '',
-            nonceStr: '',
-            package: '',
-            signType: 'MD5',
-            paySign: '',
-            success(res) {},
-            fail(res) {}
+        wx.hideLoading()
+        wx.showLoading({
+          title: '去支付...',
+        })
+        var data = res.data.data
+        console.log("提交订单" + JSON.stringify(data))
+        if (res.data.key == 200) {
+          var postData = {
+            orderid: data.orderid,
+            openid: wx.getStorageSync("openid"),
+          }
+          wx.request({
+            url: app.config.url + '/wxPay',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            data: postData, // 设置请求的 参数
+            success: (res) => {
+              var data = res.data.data
+              console.log("调起支付" + JSON.stringify(data))
+              if (res.data.key == 200) {
+                wx.requestPayment({
+                  timeStamp: data.timeStamp,
+                  nonceStr: data.nonceStr,
+                  package: data.package,
+                  signType: 'MD5',
+                  paySign: data.paySign,
+                  success(res) {
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'success',
+                      duration: 2000
+                    })
+                  },
+                  fail(res) {
+                    wx.showToast({
+                      title: '支付失败',
+                      icon: 'success',
+                      duration: 2000
+                    })
+                  }
+                })
+              }
+            }
           })
+
         }
       }
     })
+  },
+  createNonceStr: function() {
+    return Math.random().toString(36).substr(2, 15)
   },
   //点击选择地址
   selectAddress: function(e) {

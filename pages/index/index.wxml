@@ -1,5 +1,18 @@
 <!--index.wxml-->
 <!--1px = 750/320 = 2.34rpx;-->
+<view class="Title">
+  <view class="pointa">
+    <view><image src="../../images/Car.jpg" ></image> 超市
+    </view>
+  </view>
+
+   <view class="pointb">
+     <view><image src="../../images/Car.jpg" ></image> 超市
+    </view>
+  </view>
+</view>
+
+
 <view class="container">
   <view class="type-container">
     <scroll-view class="type-navbar" scroll-x="true">

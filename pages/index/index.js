@@ -89,15 +89,7 @@ Page({
         type: categoryId
       },
       success: function(res) {
-        that.setData({
-          goods:[],
-          loadingMoreHidden:true
-        });
-        var goods = [];
-        var data = res.data.data;
-        for (var item in data){
-          goods.push(data[i]);
-        }
+        var goods = res.data.data;
         that.setData({
           goods:goods,
         });
