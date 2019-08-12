@@ -151,11 +151,7 @@ Page({
     shopCarMap.name = this.data.goodsDetail.name;
     shopCarMap.num = 1;
     shopCarMap.price = this.data.goodsDetail.price;
-
     var buyNowInfo = {};
-    if (!buyNowInfo.shopNum) {
-      buyNowInfo.shopNum = 0;
-    }
     if (!buyNowInfo.shopList) {
       buyNowInfo.shopList = [];
     }
