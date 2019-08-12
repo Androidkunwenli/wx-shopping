@@ -121,8 +121,8 @@
   position: relative;
 }
 .carimg{
-  width: 65rpx;
-  height: 65rpx;
+  width: 90rpx;
+  height: 90rpx;
   margin-right: 20rpx;
    position: absolute;
   z-index: 999;
@@ -131,15 +131,16 @@
 .num{
   border: 1rpx solid red;
  border-radius: 0px;
- border-bottom-left-radius: 35%;
- border-top-left-radius: 35%;
+ border-bottom-left-radius: 45%;
+ border-top-left-radius:45%;
   display:flex;
   align-items:center;
   justify-content:center;
   width: 100rpx;
-  margin-right:50rpx;
-  height: 58rpx;
-  margin-top:2rpx;
+  margin-right:62rpx;
+  height: 79rpx;
+  margin-top:5rpx;
+  padding-right:25rpx
 }
 .goods-box .goods-title {
   width: 650rpx;
@@ -165,6 +166,7 @@
 .goods-price text{
   text-decoration:line-through;
   color: #4d4c4c;
+  font-size:25rpx;
 }
 .no-more-goods {
   text-align: center;

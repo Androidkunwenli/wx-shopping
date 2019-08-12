@@ -36,7 +36,8 @@ page{
     align-items: center;
 }
 .list-top .label{
-    color: #000;
+    color: #FFA500;
+    font-size: 30rpx;
 }
 .list-top .edit-btn{
     color: #999;
