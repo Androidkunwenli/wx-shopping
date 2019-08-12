@@ -54,7 +54,7 @@
       <view class='jiage'>
           <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
           <text class='num'>10</text>
-          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/car.png'></image>
+          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/addCar.png'></image>
       </view>
       </view>
       <text></text>
