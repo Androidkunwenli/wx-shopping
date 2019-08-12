@@ -111,4 +111,11 @@ Page({
       }
     }
   },
+  SearchInput: function (event) {
+    console.log(event.detail.value);
+    
+  },
+  addcar:function(e){
+    console.log(e.currentTarget.dataset.id);
+  }
 })

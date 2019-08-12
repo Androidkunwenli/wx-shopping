@@ -2,13 +2,27 @@
 <!--1px = 750/320 = 2.34rpx;-->
 <view class="Title">
   <view class="pointa">
-    <view><image src="../../images/Car.jpg" ></image> 超市
-    </view>
+    <view><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
+   
   </view>
 
    <view class="pointb">
-     <view><image src="../../images/Car.jpg" ></image> 超市
+              
+          <view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
+      <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
+        <icon type="clear" size="14"></icon>
+      </view>
     </view>
+  </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="SearchConfirm">
+         <text wx:if="{{SearchData.value.length>0}}" data-key='search'>搜索</text>
+    </view>
+</view>
+     
   </view>
 </view>
 
@@ -29,8 +43,23 @@
       <view class="img-box">
         <image src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
+      <view class='txt_con'>
+        
       <view class="goods-title">{{item.name}}</view>
-      <view class="goods-price">￥{{item.price}}</view>
+       <view class='st'>
+          <view class="yushou">{{item.starttime}}</view>
+         <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
+       </view>
+        <view class="yushou">{{item.endtime}}</view>
+      <view class='jiage'>
+          <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
+          <text class='num'>10</text>
+          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/car.png'></image>
+      </view>
+      </view>
+      <text></text>
+     
+      
     </view>
   </view>
   <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
