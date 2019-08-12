@@ -4,6 +4,20 @@ var app = getApp()
 Page({
   data: {
     goodsList: [],
+    orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
+  },
+  onLoad: function(e) {
+    var that = this;
+    //显示收货地址标识
+    that.setData({
+      isNeedLogistics: 1,
+      orderType: e.orderType
+    });
+  },
+  addAddress: function() {
+    wx.navigateTo({
+      url: "/pages/select-address/index"
+    })
   },
   onShow: function() {
     var that = this;
@@ -53,12 +67,12 @@ Page({
       },
       success: (res) => {
         if (res.data.key == 200) {
+          wx.hideLoading()
           that.setData({
             curAddressData: res.data.data
           })
-          wx.hideLoading()
         } else {
-
+          wx.hideLoading()
         }
       }
     })
@@ -128,10 +142,13 @@ Page({
                       icon: 'success',
                       duration: 2000
                     })
+                    wx.reLaunch({
+                      url: "/pages/order-list/index"
+                    });
                   },
                   fail(res) {
                     wx.showToast({
-                      title: '支付失败',
+                      title: '支付失败,请重新提交!',
                       icon: 'success',
                       duration: 2000
                     })

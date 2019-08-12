@@ -283,6 +283,7 @@
 .wenzi{
   padding-left: 10px;
   font-size: 12px;
+  color: #fff;
 }
 .pointb{
   width: 55%;

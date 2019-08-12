@@ -47,11 +47,59 @@ Page({
     })
   },
   toPayTap: function(e) {
+    wx.showLoading({
+      title: '提交订单..',
+    })
     var that = this;
     var orderId = e.currentTarget.dataset.id;
-    var money = e.currentTarget.dataset.money;
-    wx.showToast({
-      title: '支付成功!',
+    var postData = {
+      orderid: orderId,
+      openid: wx.getStorageSync("openid"),
+    }
+    wx.request({
+      url: app.config.url + '/wxPay',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: postData, // 设置请求的 参数
+      success: (res) => {
+        var data = res.data.data
+        console.log("调起支付" + JSON.stringify(data))
+        if (res.data.key == 200) {
+          wx.hideLoading()
+          wx.requestPayment({
+            timeStamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: 'MD5',
+            paySign: data.paySign,
+            success(res) {
+              wx.showToast({
+                title: '支付成功',
+                icon: 'success',
+                duration: 2000
+              })
+              wx.reLaunch({
+                url: "/pages/order-list/index"
+              });
+            },
+            fail(res) {
+              wx.showToast({
+                title: '支付失败,请重新提交!',
+                icon: 'success',
+                duration: 2000
+              })
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '支付失败',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      }
     })
 
   },
