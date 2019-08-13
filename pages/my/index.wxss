@@ -7,13 +7,10 @@
 }
 
 .userinfo {
-  display: flex;
-  flex-direction: column;
-  padding: 50rpx 0;
   align-items: center;
   background: #FFA500;
-  width: 750rpx;
-  height: 180rpx;
+  width:100%;
+  display: flex;
   justify-content: left;
 }
 

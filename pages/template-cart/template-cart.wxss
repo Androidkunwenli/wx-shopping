@@ -16,7 +16,7 @@ page{
 }
 .to-index-btn{
     color:#fff;
-    background:#e64340;
+    background:#FFA500;
     border-radius:6px;
     width:300rpx;
     height:70rpx;

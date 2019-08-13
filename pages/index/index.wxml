@@ -2,7 +2,7 @@
 <!--1px = 750/320 = 2.34rpx;-->
 <view class="Title">
   <view class="pointa">
-    <view><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
+    <view class='pointa_a'><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
    
   </view>
 
