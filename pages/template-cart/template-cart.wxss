@@ -16,7 +16,7 @@ page{
 }
 .to-index-btn{
     color:#fff;
-    background:#e64340;
+    background:#FFA500;
     border-radius:6px;
     width:300rpx;
     height:70rpx;
@@ -36,7 +36,8 @@ page{
     align-items: center;
 }
 .list-top .label{
-    color: #000;
+    color: #FFA500;
+    font-size: 30rpx;
 }
 .list-top .edit-btn{
     color: #999;

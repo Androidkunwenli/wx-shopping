@@ -2,7 +2,7 @@
 <!--1px = 750/320 = 2.34rpx;-->
 <view class="Title">
   <view class="pointa">
-    <view><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
+    <view class='pointa_a'><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
    
   </view>
 
@@ -47,14 +47,14 @@
         
       <view class="goods-title">{{item.name}}</view>
        <view class='st'>
-          <view class="yushou">{{item.starttime}}</view>
+          <view class="yushou">预售时间:{{item.starttime}}</view>
          <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
        </view>
-        <view class="yushou">{{item.endtime}}</view>
+        <view class="yushou">提货时间:{{item.endtime}}</view>
       <view class='jiage'>
           <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
           <text class='num'>10</text>
-          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/addCar.png'></image>
+          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/Car.png'></image>
       </view>
       </view>
       <text></text>

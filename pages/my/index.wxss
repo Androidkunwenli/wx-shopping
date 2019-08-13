@@ -1,3 +1,5 @@
+@import "../../css/tihuo.wxss";
+@import "../../css/home.wxss";
 .container {
   min-height: 100%;
   overflow: hidden;
@@ -5,17 +7,16 @@
 }
 
 .userinfo {
-  display: flex;
-  flex-direction: column;
-  padding: 50rpx 0;
   align-items: center;
   background: #FFA500;
-  width: 750rpx;
+  width:100%;
+  display: flex;
+  justify-content: left;
 }
 
 .userinfo-avatar {
-  width: 160rpx;
-  height: 160rpx;
+  width: 130rpx;
+  height: 130rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
@@ -23,6 +24,7 @@
 .userinfo-nickname {
   margin-top: 20rpx;
   color: #fff;
+  margin:55rpx 20rpx;
 }
 
 .version {
@@ -36,20 +38,57 @@
 
 .my-item {
   width: 100%;
-  background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 750rpx center;
-  background-size: 16rpx auto, 750rpx auto;
-  margin: 20rpx 0;
-  height: 80rpx;
-  line-height: 80rpx;
-  padding-left: 100rpx;
+  background: url(../../images/arrow-right.png) no-repeat 710rpx center;
+  background-size: 16rpx auto, 710rpx auto;
+  line-height: 100rpx;
+  padding-left: 50rpx;
+  font-size: 30rpx;
+    border-bottom:  1rpx solid rgb(221, 221, 221);
+      display: flex;
+  justify-content: left;
+}
+.my-order{
+    width: 100%;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  border-bottom:  1rpx solid rgb(221, 221, 221);
+}
+.order_nav{
+     border-bottom:  1rpx solid rgb(221, 221, 221);
+    padding-left: 50rpx;
+      background: url(../../images/arrow-right.png) no-repeat 710rpx center;
+  background-size: 16rpx auto, 710rpx auto;
+  
+}
+.tihuo{
+  letter-spacing: 3rpx;
+  font-size: 30rpx;
+}
+.tihuo_icon{
+  margin-right: 20rpx;
+  color: rgb(163, 162, 162)
+}
+.status{
+ width: 33.3%
+}
+.order_st{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.icon-daifukuan{
+  font-size: 80rpx;
+  color:#FFA500;
+}
+.icon-daitihuo{
+  font-size: 80rpx;
+  color:#FFA500;
+}
+.icon-yiwancheng{
+  font-size: 76rpx;
+  color:#FFA500;
+}
+.tip{
+  color:red;
 }
 
-.about {
-  width: 100%;
-  background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 750rpx center;
-  background-size: 16rpx auto, 750rpx auto;
-  margin: 20rpx 0;
-  height: 80rpx;
-  line-height: 80rpx;
-  padding-left: 100rpx;
-}
