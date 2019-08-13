@@ -111,7 +111,6 @@ Page({
     var hasSameGoodsIndex = -1;
     for (var i = 0; i < shopCarInfo.shopList.length; i++) {
       var tmpShopCarMap = shopCarInfo.shopList[i];
-      this.data.shopNum += tmpShopCarMap.shopNum
       if (tmpShopCarMap.goodsId == shopCarMap.goodsId) {
         hasSameGoodsIndex = i;
         shopCarMap.num = shopCarMap.num + tmpShopCarMap.num;
@@ -122,7 +121,7 @@ Page({
     } else {
       shopCarInfo.shopList.push(shopCarMap);
     }
-    shopCarInfo.shopNum = shopCarMap.num;
+    shopCarInfo.shopNum = this.data.shopNum;
     return shopCarInfo;
   },
   /**
