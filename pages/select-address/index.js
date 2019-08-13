@@ -7,6 +7,10 @@ Page({
   },
 
   selectTap: function(e) {
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+    })
     var id = e.currentTarget.dataset.id;
     wx.request({
       url: app.config.url + '/apipoint/addpoint',
@@ -19,6 +23,7 @@ Page({
         pointid: id,
       },
       success: (res) => {
+        wx.hideLoading()
         wx.navigateBack({})
       }
     })
@@ -28,6 +33,10 @@ Page({
     that.getUserLocation();
   },
   initShippingAddress: function(e) {
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+    })
     var that = this;
     wx.request({
       url: app.config.url + "/apipoint/searchPoint",
@@ -40,6 +49,7 @@ Page({
         y: e.longitude,
       },
       success: (res) => {
+        wx.hideLoading()
         if (res.data.key == 200) {
           that.setData({
             addressList: res.data.data
@@ -55,6 +65,12 @@ Page({
   getUserLocation: function() {
     let vm = this;
     wx.getSetting({
+      fail: () => {
+        wx.showToast({
+          title: '获取定位失败，请打开定位，重新进入！',
+          icon: 'none',
+        })
+      },
       success: (res) => {
         console.log(JSON.stringify(res))
         // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
@@ -67,26 +83,19 @@ Page({
             success: function(res) {
               if (res.cancel) {
                 wx.showToast({
-                  title: '拒绝授权',
+                  title: '获取定位失败，请打开定位，重新进入！',
                   icon: 'none',
-                  duration: 1000
                 })
               } else if (res.confirm) {
                 wx.openSetting({
                   success: function(dataAu) {
                     if (dataAu.authSetting["scope.userLocation"] == true) {
-                      wx.showToast({
-                        title: '授权成功',
-                        icon: 'success',
-                        duration: 1000
-                      })
                       //再次授权，调用wx.getLocation的API
                       vm.getLocation();
                     } else {
                       wx.showToast({
-                        title: '授权失败',
+                        title: '获取定位失败，请打开定位，重新进入！',
                         icon: 'none',
-                        duration: 1000
                       })
                     }
                   }
@@ -120,7 +129,10 @@ Page({
         vm.initShippingAddress(res)
       },
       fail: function(res) {
-        console.log('fail' + JSON.stringify(res))
+        wx.showToast({
+          title: '获取定位失败，请打开定位，重新进入！',
+          icon: 'none',
+        })
       }
     })
   },

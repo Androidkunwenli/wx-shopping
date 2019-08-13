@@ -78,6 +78,9 @@ Page({
     });
   },
   getGoodsList: function (categoryId) {
+    // wx.showToast({
+    //   title: "请求..",
+    // })
     if (categoryId == 0) {
       categoryId = "";
     }

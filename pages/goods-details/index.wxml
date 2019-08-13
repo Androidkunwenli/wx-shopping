@@ -3,63 +3,68 @@
   <view class="swiper-container">
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
   </view>
-<view class='sharnum'>
-      <view class="goods-number">
-    <view class="goods-number-row">
-      <view class="goods-price">¥{{selectSizePrice}} <text class="goods-price-line" style="text-decoration:line-through;">¥ {{oldprice}}</text></view>
+  <view class='sharnum'>
+    <view class="goods-number">
+      <view class="goods-number-row">
+        <view class="goods-price">¥{{selectSizePrice}}
+          <text class="goods-price-line" style="text-decoration:line-through;">¥ {{oldprice}}</text>
+        </view>
+      </view>
+      <view class="goods-sale">
+        已售{{sale}}份/剩余{{total}}份
+      </view>
     </view>
-    <view class="goods-sale">
-     已售{{sale}}份/剩余{{total}}份
-    </view>
+    <button class='iconfont icon-fenxiang shareimg' open-type="share"></button>
   </view>
-    <text class='iconfont icon-fenxiang shareimg'></text>
-</view>
   <view class="goods-info">
     <view class="goods-title">{{commodityTitle}}</view>
-   <view class='retime'>
+    <view class='retime'>
       <view class='retime_a'>
-         <view class="yushou">预售时间:{{starttime}}</view>
+        <view class="yushou">预售时间:{{starttime}}</view>
         <view class="yushou">提货时间:{{endtime}}</view>
       </view>
       <view class='retime_b tui-countdown-content'>剩:
         <text class='tui-conutdown-box'>{{countDownHour}}</text>时
-        <text class='tui-conutdown-box'>{{countDownMinute}}</text>分 
+        <text class='tui-conutdown-box'>{{countDownMinute}}</text>分
         <text class='tui-conutdown-box'>{{countDownSecond}}</text>秒
       </view>
 
-   </view>
+    </view>
   </view>
   <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="bindGuiGeTap">
     {{selectSize}}
   </view>
- <view class='topTabSwiper'>
-<view class='tab {{currentData == 0 ? "tabBorer" : ""}}' data-current = "0" bindtap='checkCurrent'>基本信息</view>
-<view class='tab {{currentData == 1 ? "tabBorer" : ""}}' data-current = "1" bindtap='checkCurrent'>购买记录</view>
-<view class='tab {{currentData == 2 ? "tabBorer" : ""}}' data-current = "2" bindtap='checkCurrent'>购买流程</view>
-</view>
-<swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
-
-<swiper-item><view class='swiper_con'>
-    <view class="goods-des-info">
-    <view class="label-title">商品详情</view>
-    <view class="goods-text">
-      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
-    </view>
+  <view class='topTabSwiper'>
+    <view class='tab {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>基本信息</view>
+    <view class='tab {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>购买记录</view>
+    <view class='tab {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>购买流程</view>
   </view>
-</view>
-</swiper-item>
+  <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
 
-<swiper-item><view class='swiper_con'>这是个购买记录</view>
-</swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>
+        <view class="goods-des-info">
+          <view class="label-title">商品详情</view>
+          <view class="goods-text">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+        </view>
+      </view>
+    </swiper-item>
 
-<swiper-item><view class='swiper_con'>这是个关注页面</view></swiper-item>
+    <swiper-item>
+      <view class='swiper_con'>这是个购买记录</view>
+    </swiper-item>
 
-</swiper>
+    <swiper-item>
+      <view class='swiper_con'>这是个关注页面</view>
+    </swiper-item>
+
+  </swiper>
 
   <view class="footer-box">
-    <view class="contact">
-      <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
-      客服
+    <view class="contact" src="../../images/image_home.png" bindtap="goHome">
+      主页
     </view>
     <view class="shop-cart-btn" bindtap="goShopCar">
       <view class="shop-num">({{shopNum}})</view>

@@ -5,6 +5,7 @@ var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
   data: {
+    currentData: 0,
     autoplay: true,
     interval: 3000,
     duration: 1000,
@@ -33,6 +34,10 @@ Page({
   },
   onLoad: function(e) {
     var that = this;
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+    })
     // 获取购物车数据
     wx.getStorage({
       key: 'shopCarInfo',
@@ -42,9 +47,6 @@ Page({
           shopNum: res.data.shopNum == null ? "0" : res.data.shopNum
         });
       }
-    })
-    wx.showToast({
-      title: "商品ID=" + e.id,
     })
     wx.request({
       url: app.config.url + '/apigoods/gooddetail',
@@ -56,22 +58,32 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-        var goodsDetail = res.data.data;
-        that.data.goodsDetail = res.data.data;
-        that.setData({
-          avatarUrl: goodsDetail.picture,
-          commodityTitle: goodsDetail.name,
-          selectSizePrice: goodsDetail.price,
-          oldprice: goodsDetail.oldprice,
-          sale: goodsDetail.sale,
-          total: goodsDetail.total,
-        });
-        wx.setNavigationBarTitle({
-          title: goodsDetail.name
-        })
-        WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
+        wx.hideLoading()
+        if (res.data.key == 200) {
+          var goodsDetail = res.data.data;
+          that.data.goodsDetail = res.data.data;
+          that.setData({
+            avatarUrl: goodsDetail.picture,
+            commodityTitle: goodsDetail.name,
+            selectSizePrice: goodsDetail.price,
+            oldprice: goodsDetail.oldprice,
+            sale: goodsDetail.sale,
+            total: goodsDetail.total,
+          });
+          wx.setNavigationBarTitle({
+            title: goodsDetail.name
+          })
+          WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
+        } else {
+          wx.navigateBack({})
+        }
       }
     })
+  },
+  goHome: function() {
+    wx.switchTab({
+      url: "/pages/index/index"
+    });
   },
   goShopCar: function() {
     wx.reLaunch({
@@ -127,7 +139,12 @@ Page({
     } else {
       shopCarInfo.shopList.push(shopCarMap);
     }
-    shopCarInfo.shopNum = this.data.shopNum;
+    var shopNum = 0;
+    for (var item in shopCarInfo.shopList) {
+      shopNum += shopCarInfo.shopList[item].num
+    }
+    shopCarInfo.shopNum = shopNum;
+    this.data.shopNum = shopCarInfo.shopNum;
     return shopCarInfo;
   },
   /**
@@ -176,57 +193,28 @@ Page({
       }
     }
   },
-
-  data: {
-
-    currentData: 0,
-
-  },
-
-  /**
-  
-  * 生命周期函数--监听页面加载
-  
-  */
-
-
-
   //获取当前滑块的index
-
   bindchange: function(e) {
-
     const that = this;
-
     that.setData({
-
       currentData: e.detail.current
-
     })
-
   },
 
   //点击切换，滑块index赋值
-
   checkCurrent: function(e) {
-
     const that = this;
     if (that.data.currentData === e.target.dataset.current) {
       return false;
     } else {
-
-
       that.setData({
-
         currentData: e.target.dataset.current
-
       })
-
     }
-
   },
-  onReady: function () {
-    var totalSecond = Date.parse(new Date("2019/08/13")) / 1000 - Date.parse(new Date()) / 1000;
-    var interval = setInterval(function () {
+  onReady: function() {
+    var totalSecond = Date.parse(new Date("2019/08/30")) / 1000 - Date.parse(new Date()) / 1000;
+    var interval = setInterval(function() {
       // 秒数
       var second = totalSecond;
       // 天数位

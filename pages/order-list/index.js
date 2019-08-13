@@ -6,6 +6,14 @@ Page({
     currentType: 0,
     tabClass: ["", "", "", "", ""]
   },
+  onLoad:function(e){
+    var curType = e.id;
+    this.data.currentType = curType
+    this.setData({
+      currentType: curType
+    });
+    this.onShow();
+  },
   statusTap: function(e) {
     var curType = e.currentTarget.dataset.index;
     this.data.currentType = curType

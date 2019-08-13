@@ -61,6 +61,7 @@
   
 }
 .tihuo{
+  width: 100%;
   letter-spacing: 3rpx;
   font-size: 30rpx;
 }

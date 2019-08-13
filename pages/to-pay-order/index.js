@@ -46,7 +46,7 @@ Page({
       allGoodsAndYunPrice += (shopList[x].price * shopList[x].num);
     }
     that.setData({
-      allGoodsAndYunPrice: allGoodsAndYunPrice,
+      allGoodsAndYunPrice: parseFloat(allGoodsAndYunPrice.toFixed(2)),
     });
     //获取默认地址
     that.getSelectpoint()
@@ -80,6 +80,7 @@ Page({
   createOrder: function(e) {
     wx.showLoading({
       title: '提交订单中...',
+      mask: true,
     })
     var that = this;
     var remark = ""; // 备注信息
@@ -109,12 +110,13 @@ Page({
       data: postData, // 设置请求的 参数
       success: (res) => {
         wx.hideLoading()
-        wx.showLoading({
-          title: '去支付...',
-        })
-        var data = res.data.data
-        console.log("提交订单" + JSON.stringify(data))
         if (res.data.key == 200) {
+          console.log("提交订单" + JSON.stringify(data))
+          wx.showLoading({
+            title: '去支付...',
+            mask: true,
+          })
+          var data = res.data.data
           var postData = {
             orderid: data.orderid,
             openid: wx.getStorageSync("openid"),
@@ -158,6 +160,10 @@ Page({
             }
           })
 
+        } else if (res.data.code == 1) {
+          wx.showToast({
+            title: res.data.msg,
+          })
         }
       }
     })
