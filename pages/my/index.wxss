@@ -78,15 +78,15 @@
   text-align: center;
 }
 .icon-daifukuan{
-  font-size: 80rpx;
+  font-size: 66rpx;
   color:#FFA500;
 }
 .icon-daitihuo{
-  font-size: 80rpx;
+  font-size: 66rpx;
   color:#FFA500;
 }
 .icon-yiwancheng{
-  font-size: 76rpx;
+  font-size: 66rpx;
   color:#FFA500;
 }
 .tip{

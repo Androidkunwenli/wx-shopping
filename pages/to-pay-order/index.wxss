@@ -25,7 +25,7 @@
     box-sizing: border-box;
     padding-left: 100rpx;
     background: url(https://cdn.it120.cc/images/weappshop/ico-addr.png) no-repeat 30rpx 35rpx;
-    background-size: 30rpx auto;
+    background-size: 60rpx auto;
 }
 .show-address .name-tel{
     font-size: 28rpx;
@@ -83,18 +83,20 @@ form{
  }
 .a-goods .text-box .arow .goods-name{
      width: 360rpx;
-     font-size:26rpx;
-     height: 74rpx;
+     font-size:29rpx;
+     height: 145rpx;
      color:#000000;
      line-height: 1.6;
      overflow: hidden;
+     letter-spacing: 3rpx;
+
  }
 .a-goods .text-box .arow01{
     margin-bottom: 30rpx;
 }
 .a-goods .text-box .arow .goods-price{
-    font-size:26rpx;
-    color:#000000;
+    font-size:40rpx;
+    color:red;
     align-self: flex-start;
 }
 .a-goods .text-box .arow .goods-label{
@@ -120,17 +122,19 @@ form{
     border-bottom: 1rpx solid #eee;
 }
 .peisong-way .row-label{
-    font-size: 28rpx;
+    font-size: 26rpx;
     color: #000;
+    letter-spacing: 5rpx;
 }
 .peisong-way .right-text{
-    font-size: 28rpx;
+    font-size: 26rpx;
     color: #666;
     padding-right: 30rpx;
 }
 .peisong-way .liuyan{
     width: 510rpx;
-    font-size: 28rpx;
+    font-size: 26rpx;
+    letter-spacing: 5rpx;
 }
 .goods-info{
     width: 100%;
@@ -167,7 +171,7 @@ form{
     text-align: center;
     height: 100%;
     line-height: 100rpx;
-    background-color: #e64340;
+    background-color: #FFA500;
     font-size:32rpx;
     color:#ffffff;
     border-radius: 0;

@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <!--1px = 750/320 = 2.34rpx;-->
+<view class="index_top">
 <view class="Title">
   <view class="pointa">
     <view class='pointa_a'><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
@@ -26,9 +27,7 @@
   </view>
 </view>
 
-
-<view class="container">
-  <view class="type-container">
+ <view class="type-container">
     <scroll-view class="type-navbar" scroll-x="true">
       <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
         <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
@@ -36,25 +35,28 @@
         </view>
       </view>
     </scroll-view>
-  </view>
+  </view></view>
+<view class="container">
+ 
 
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+   
       <view class="img-box">
+       <view class='img_div'></view>
         <image src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
       <view class='txt_con'>
         
       <view class="goods-title">{{item.name}}</view>
        <view class='st'>
-          <view class="yushou">预售时间:{{item.starttime}}</view>
+          <view class="yushou">预售时间:{{item.stime}}</view>
          <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
        </view>
-        <view class="yushou">提货时间:{{item.endtime}}</view>
+        <view class="yushou">提货时间:{{item.etime}}</view>
       <view class='jiage'>
           <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
-          <text class='num'>10</text>
-          <image catchtap='addcar' data-id="{{item.id}}" class='carimg' src='../../images/Car.png'></image>
+          <icon catchtap='addcar' data-id="{{item.id}}" class="carimg iconfont icon-gouwucheman"></icon>
       </view>
       </view>
       <text></text>

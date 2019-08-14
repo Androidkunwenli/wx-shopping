@@ -1,6 +1,7 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
   <view class="swiper-container">
+    <view class='img_div'></view>
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
   </view>
   <view class='sharnum'>
@@ -20,8 +21,8 @@
     <view class="goods-title">{{commodityTitle}}</view>
     <view class='retime'>
       <view class='retime_a'>
-        <view class="yushou">预售时间:{{starttime}}</view>
-        <view class="yushou">提货时间:{{endtime}}</view>
+        <view class="yushou">预售时间:{{stime}}</view>
+        <view class="yushou">提货时间:{{etime}}</view>
       </view>
       <view class='retime_b tui-countdown-content'>剩:
         <text class='tui-conutdown-box'>{{countDownHour}}</text>时
@@ -42,14 +43,7 @@
   <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
 
     <swiper-item>
-      <view class='swiper_con'>
-        <view class="goods-des-info">
-          <view class="label-title">商品详情</view>
-          <view class="goods-text">
-            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
-          </view>
-        </view>
-      </view>
+    <view class='swiper_con'>这是个基本信息</view>
     </swiper-item>
 
     <swiper-item>

@@ -1,8 +1,7 @@
-var wxpay = require('../../utils/pay.js')
 var app = getApp()
 Page({
   data: {
-    statusType: ["全部", "未付款", "待提货", "已出货"],
+    statusType: ["全部", "未付款", "待提货", "已完成"],
     currentType: 0,
     tabClass: ["", "", "", "", ""]
   },
