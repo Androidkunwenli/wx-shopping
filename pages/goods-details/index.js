@@ -69,6 +69,8 @@ Page({
             oldprice: goodsDetail.oldprice,
             sale: goodsDetail.sale,
             total: goodsDetail.total,
+            stime: goodsDetail.stime,
+            etime:goodsDetail.etime,
           });
           wx.setNavigationBarTitle({
             title: goodsDetail.name

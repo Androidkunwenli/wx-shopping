@@ -1,8 +1,9 @@
 /**index.wxss**/
-
+@import "../../css/home.wxss";
 .container {
   background-color: #f2f2f2;
   min-height: 100%;
+  margin-top: 26%;
 }
 
 .swiper-container {
@@ -79,6 +80,18 @@
   overflow: hidden;
   margin: 20rpx 0;
 }
+.img_div{
+  width: 98%;
+  height: 329rpx;
+  opacity:0.8;
+  z-index: 999;
+  position:absolute;
+  background:#313131 url(http://z5m9pi.natappfree.cc/img/timg.png) no-repeat  center center;
+  background-size: 420rpx 350rpx;
+  border-radius: 30rpx;
+  display: none;
+
+}
 
 .goods-box .img-box {
   width: 100%;
@@ -123,10 +136,18 @@
 .carimg{
   width: 90rpx;
   height: 90rpx;
-  margin-right: 20rpx;
+  margin-right:70rpx;
    position: absolute;
   z-index: 999;
-  right: 0
+  right: 0;
+  top:-13rpx;
+  font-size: 60rpx;
+  color: #fff;
+  background-color: red;
+  border-radius: 50%;
+display:flex;                   
+ justify-content: center;
+ align-items: center;
 }
 .num{
   border: 1rpx solid red;
@@ -139,7 +160,7 @@
   width: 100rpx;
   margin-right:62rpx;
   height: 79rpx;
-  margin-top:5rpx;
+  margin-top:-8rpx;
   padding-right:25rpx
 }
 .goods-box .goods-title {
@@ -159,7 +180,6 @@
   overflow: hidden;
   color: #e64340;
   font-weight:600;
-  letter-spacing:2rpx;
   margin: 15rpx 0 0 0;
   font-size: 35rpx;
 }
@@ -261,7 +281,11 @@
 .goods-price-oldprice {
   margin: 10rpx 20rpx 10rpx;
 }
-
+.index_top{
+  position:fixed; top:0;width: 750rpx;
+  z-index: 9999;
+  height: 300rpx;
+}
 
 .Title{
    height: 100rpx;
@@ -276,9 +300,9 @@
 }
 .pointa_a{
   display: flex;
-  justify-content: center;
-  margin-top:20rpx;
-
+  justify-content: left;
+  margin-top:10rpx;
+margin-left:20rpx;
 }
 .pointa image{
   width: 60rpx;
@@ -317,7 +341,7 @@
   -webkit-box-flex: 1;
   -webkit-flex: auto;
   flex: auto;
-  border-radius: 5px;
+  border-radius: 25px;
   background: #fff;
   border: 1rpx solid #e6e6ea;
 }
