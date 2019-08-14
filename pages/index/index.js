@@ -8,30 +8,68 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    loadingHidden: false , // loading
+    loadingHidden: false, // loading
     userInfo: {},
-    swiperCurrent: 0,  
-    selectCurrent:0,
-    categories: [
-      { id: 0, name: "全部" },
-      { id: 1, name: "新鲜水果" },
-      { id: 2, name: "蔬菜" },
-      { id: 3, name: "肉禽蛋类" },
-      { id: 4, name: "粮油米面" },
-      { id: 5, name: "休闲零食" },
-      { id: 6, name: "鲜花园艺" },
-      { id: 7, name: "居家百货" },
-      { id: 8, name: "本地生活" }
+    swiperCurrent: 0,
+    selectCurrent: 0,
+    categories: [{
+        id: 0,
+        name: "全部"
+      },
+      {
+        id: 1,
+        name: "新鲜水果"
+      },
+      {
+        id: 2,
+        name: "蔬菜"
+      },
+      {
+        id: 3,
+        name: "肉禽蛋类"
+      },
+      {
+        id: 4,
+        name: "粮油米面"
+      },
+      {
+        id: 5,
+        name: "休闲零食"
+      },
+      {
+        id: 6,
+        name: "鲜花园艺"
+      },
+      {
+        id: 7,
+        name: "居家百货"
+      },
+      {
+        id: 8,
+        name: "本地生活"
+      }
     ],
     activeCategoryId: 0,
-    goods:[],
-    scrollTop:"0",
-    loadingMoreHidden:true,
-    hasNoCoupons:true,
-    coupons: []
+    goods: [],
+    scrollTop: "0",
+    loadingMoreHidden: true,
+    hasNoCoupons: true,
+    coupons: [],
+    searchStr: "",
+    shopCarInfo: {},
   },
-
-  tabClick: function (e) {
+  // 搜索
+  searchConfirm: function(e) {
+    var that = this;
+    that.data.searchStr = e.detail.value;
+    if (e.detail.value) {
+      that.getGoodsList(0);
+      that.setData({
+        activeCategoryId: 0
+      });
+    }
+  },
+  tabClick: function(e) {
     this.setData({
       activeCategoryId: e.currentTarget.id
     });
@@ -39,45 +77,71 @@ Page({
   },
   //事件处理函数
   swiperchange: function(e) {
-      //console.log(e.detail.current)
-       this.setData({  
-        swiperCurrent: e.detail.current  
-    })  
-  },
-  toDetailsTap:function(e){
-    wx.navigateTo({
-      url:"/pages/goods-details/index?id="+e.currentTarget.dataset.id
+    //console.log(e.detail.current)
+    this.setData({
+      swiperCurrent: e.detail.current
     })
   },
-  tapBanner: function(e) {
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
-      })
-    }
+  toDetailsTap: function(e) {
+    wx.navigateTo({
+      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+    })
   },
   bindTypeTap: function(e) {
-     this.setData({  
-        selectCurrent: e.index  
-    })  
+    this.setData({
+      selectCurrent: e.index
+    })
   },
-  scroll: function (e) {
+  scroll: function(e) {
     //  console.log(e) ;
-    var that = this,scrollTop=that.data.scrollTop;
+    var that = this,
+      scrollTop = that.data.scrollTop;
     that.setData({
-      scrollTop:e.detail.scrollTop
+      scrollTop: e.detail.scrollTop
     })
     // console.log('e.detail.scrollTop:'+e.detail.scrollTop) ;
     // console.log('scrollTop:'+scrollTop)
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this
     that.getGoodsList(0);
     that.setData({
       activeCategoryId: 0
     });
+    // 获取购物车数据
+    wx.getStorage({
+      key: 'shopCarInfo',
+      success: function(res) {
+        that.setData({
+          shopCarInfo: res.data,
+        });
+      }
+    })
   },
-  getGoodsList: function (categoryId) {
+  onShow: function() {
+    var that = this;
+    wx.request({
+      url: app.config.url + "/apipoint/selectpoint",
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: {
+        userid: wx.getStorageSync("id"),
+      },
+      success: (res) => {
+        if (res.data.key == 200) {
+          wx.hideLoading()
+          that.setData({
+            curAddressData: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+        }
+      }
+    })
+  },
+  getGoodsList: function(categoryId) {
     // wx.showToast({
     //   title: "请求..",
     // })
@@ -87,14 +151,16 @@ Page({
     console.log(categoryId)
     var that = this;
     wx.request({
-      url: app.config.url +'/apigoods/list',
+      url: app.config.url + '/apigoods/list',
       data: {
-        type: categoryId
+        type: categoryId,
+        search: that.data.searchStr
       },
       success: function(res) {
         var goods = res.data.data;
+        console.log(goods)
         that.setData({
-          goods:goods,
+          goods: goods,
         });
         that.setData({
           loadingMoreHidden: false,
@@ -102,23 +168,81 @@ Page({
       }
     })
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: wx.getStorageSync('mallName') + '——' + app.globalData.shareProfile,
       path: '/pages/index/index',
-      success: function (res) {
+      success: function(res) {
         // 转发成功
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
   },
-  SearchInput: function (event) {
-    console.log(event.detail.value);
-    
+  /**
+   * 加入购物车
+   */
+  addcar: function(e) {
+    var userInfo = wx.getStorageSync("userInfo")
+    if (userInfo) {
+      var goodsDetail = e.currentTarget.dataset.item;
+      console.log(goodsDetail);
+      //组建购物车
+      if (goodsDetail) {
+        var shopCarInfo = this.bulidShopCarInfo(goodsDetail);
+        if (shopCarInfo) {
+          // 写入本地存储
+          wx.setStorage({
+            key: "shopCarInfo",
+            data: shopCarInfo
+          })
+          wx.showToast({
+            title: '加入购物车成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      }
+    } else {
+      wx.reLanch({
+        url: '/pages/login/login'
+      })
+    }
   },
-  addcar:function(e){
-    console.log(e.currentTarget.dataset.id);
-  }
+  /**
+   * 组建购物车信息
+   */
+  bulidShopCarInfo: function(goodsDetail) {
+    // 加入购物车
+    var shopCarMap = {};
+    shopCarMap.goodsId = goodsDetail.id;
+    shopCarMap.pic = goodsDetail.picture;
+    shopCarMap.name = goodsDetail.name;
+    shopCarMap.num = 1;
+    shopCarMap.price = goodsDetail.price;
+    var shopCarInfo = this.data.shopCarInfo;
+    if (!shopCarInfo.shopList) {
+      shopCarInfo.shopList = [];
+    }
+    var hasSameGoodsIndex = -1;
+    for (var i = 0; i < shopCarInfo.shopList.length; i++) {
+      var tmpShopCarMap = shopCarInfo.shopList[i];
+      if (tmpShopCarMap.goodsId == shopCarMap.goodsId) {
+        hasSameGoodsIndex = i;
+        shopCarMap.num = shopCarMap.num + tmpShopCarMap.num;
+      }
+    }
+    if (hasSameGoodsIndex > -1) {
+      shopCarInfo.shopList.splice(hasSameGoodsIndex, 1, shopCarMap);
+    } else {
+      shopCarInfo.shopList.push(shopCarMap);
+    }
+    var shopNum = 0;
+    for (var item in shopCarInfo.shopList) {
+      shopNum += shopCarInfo.shopList[item].num
+    }
+    shopCarInfo.shopNum = shopNum;
+    return shopCarInfo;
+  },
 })

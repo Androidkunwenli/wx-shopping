@@ -1,7 +1,7 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
   <view class="swiper-container">
-    <view class='img_div'></view>
+    <view class='img_div' style="display:{{display}}"></view>
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
   </view>
   <view class='sharnum'>
@@ -32,18 +32,17 @@
 
     </view>
   </view>
-  <view wx:if="{{hasMoreSelect}}" class="row-arrow" bindtap="bindGuiGeTap">
-    {{selectSize}}
-  </view>
+
   <view class='topTabSwiper'>
     <view class='tab {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>基本信息</view>
     <view class='tab {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>购买记录</view>
     <view class='tab {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>购买流程</view>
   </view>
   <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
-
     <swiper-item>
-    <view class='swiper_con'>这是个基本信息</view>
+      <view class='swiper_con'>
+        <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
+      </view>
     </swiper-item>
 
     <swiper-item>

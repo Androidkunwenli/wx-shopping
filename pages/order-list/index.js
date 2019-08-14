@@ -5,13 +5,17 @@ Page({
     currentType: 0,
     tabClass: ["", "", "", "", ""]
   },
-  onLoad:function(e){
-    var curType = e.id;
-    this.data.currentType = curType
-    this.setData({
-      currentType: curType
-    });
-    this.onShow();
+  //点击非全部订单
+  onLoad: function(e) {
+    if (e.id) {
+      var curType = e.id;
+      this.data.currentType = curType
+      this.setData({
+        currentType: curType
+      });
+      this.onShow();
+
+    }
   },
   statusTap: function(e) {
     var curType = e.currentTarget.dataset.index;
