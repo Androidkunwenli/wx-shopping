@@ -56,7 +56,17 @@ Page({
     hasNoCoupons: true,
     coupons: []
   },
-
+  // 搜索
+  searchConfirm: function(e) {
+    var that = this;
+    that.data.searchStr = e.detail.value;
+    if (e.detail.value) {
+      that.getGoodsList(0);
+      that.setData({
+        activeCategoryId: 0
+      });
+    }
+  },
   tabClick: function(e) {
     this.setData({
       activeCategoryId: e.currentTarget.id
@@ -102,6 +112,29 @@ Page({
       activeCategoryId: 0
     });
   },
+  onShow: function() {
+    var that = this;
+    wx.request({
+      url: app.config.url + "/apipoint/selectpoint",
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: {
+        userid: wx.getStorageSync("id"),
+      },
+      success: (res) => {
+        if (res.data.key == 200) {
+          wx.hideLoading()
+          that.setData({
+            curAddressData: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+        }
+      }
+    })
+  },
   getGoodsList: function(categoryId) {
     // wx.showToast({
     //   title: "请求..",
@@ -114,7 +147,8 @@ Page({
     wx.request({
       url: app.config.url + '/apigoods/list',
       data: {
-        type: categoryId
+        type: categoryId,
+        search: that.data.searchStr
       },
       success: function(res) {
         var goods = res.data.data;

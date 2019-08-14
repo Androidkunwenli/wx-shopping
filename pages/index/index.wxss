@@ -291,14 +291,14 @@ display:flex;
 }
 
 .Title{
-   height: 100rpx;
+   height: 80rpx;
    display: flex;
    flex-direction: row;
    justify-content: flex-start;
    background-color: 	#FFA500;
 }
 .pointa{
-  width: 45%;
+  width: 55%;
   font-size: 30rpx;
 }
 .pointa_a{
@@ -319,7 +319,8 @@ margin-left:20rpx;
   line-height:60rpx;
 }
 .pointb{
-  width: 55%;
+  width: 45%;
+  margin-right: 30rpx;
 }
 .weui-search-bar {
   position: relative;
@@ -360,7 +361,7 @@ margin-left:20rpx;
 .weui-search-bar__input {
   height: 28px;
   line-height: 28px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .weui-icon-clear {

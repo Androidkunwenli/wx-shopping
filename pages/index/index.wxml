@@ -3,27 +3,19 @@
 <view class="index_top">
   <view class="Title">
     <view class="pointa">
-
-      <view class='pointa_a'>
-        <image src="../../images/Car.jpg"></image>
-        <text class='wenzi'>这是文字内容</text> </view>
-
+      <view class='pointa_a' hidden="{{!curAddressData}}">
+        <image src="{{curAddressData.avatarurl}}"></image>
+        <view class='wenzi'>{{curAddressData.name}}</view>
+      </view>
     </view>
 
     <view class="pointb">
-
       <view class="weui-search-bar">
         <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
-            <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
-              <icon type="clear" size="14"></icon>
-            </view>
+            <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{searchConfirm.value}}" bindinput='SearchInput' bindconfirm="searchConfirm" />
           </view>
-        </view>
-        <view class="weui-search-bar__cancel-btn" bindtap="SearchConfirm">
-          <text wx:if="{{SearchData.value.length>0}}" data-key='search'>搜索</text>
         </view>
       </view>
 
