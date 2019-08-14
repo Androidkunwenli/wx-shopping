@@ -51,7 +51,8 @@
       <view class="goods-title">{{item.name}}</view>
        <view class='st'>
           <view class="yushou">预售时间:{{item.stime}}</view>
-         <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
+         <view class='sale'>累计<text class='salenum'>{{item.sale}}</text>份/剩余<text class='salenum'>{{item.surplus}}</text>份</view>
+       
        </view>
         <view class="yushou">提货时间:{{item.etime}}</view>
       <view class='jiage'>

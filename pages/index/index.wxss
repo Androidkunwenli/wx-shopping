@@ -128,6 +128,9 @@
 .sale{
  font-size:30rpx;
 }
+.salenum{
+  color:red;
+}
 .jiage{
    display: flex;
   justify-self: left;
@@ -142,8 +145,8 @@
   right: 0;
   top:-13rpx;
   font-size: 60rpx;
-  color: #fff;
-  background-color: red;
+  color: red;
+  border: 3rpx solid red;
   border-radius: 50%;
 display:flex;                   
  justify-content: center;

@@ -12,9 +12,9 @@
   opacity:0.8;
   z-index: 999;
   position:absolute;
-  background:#313131 url(http://z5m9pi.natappfree.cc/img/timg.png) no-repeat  center center;
+  background:#313131 url(http://39.100.101.222/img/timg.png) no-repeat  center center;
   background-size: 420rpx 350rpx;
-  display: block;
+  display: none;
 }
 .image {
   width: 100%;
