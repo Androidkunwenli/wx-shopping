@@ -3,7 +3,10 @@
 //获取应用实例
 var app = getApp();
 Page({
-
+  data: {
+    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
   onLoad: function () {
     // 页面加载时使用用户授权逻辑，弹出确认的框  
     this.userAuthorized()

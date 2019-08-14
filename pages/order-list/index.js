@@ -113,7 +113,9 @@ Page({
   },
   onShow: function() {
     // 获取订单列表
-    wx.showLoading();
+    wx.showLoading({
+      title: '加载中..',
+    });
     var that = this;
     var type = "";
     var statusStr = "";
