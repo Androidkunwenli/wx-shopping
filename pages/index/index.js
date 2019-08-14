@@ -8,30 +8,56 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    loadingHidden: false , // loading
+    loadingHidden: false, // loading
     userInfo: {},
-    swiperCurrent: 0,  
-    selectCurrent:0,
-    categories: [
-      { id: 0, name: "全部" },
-      { id: 1, name: "新鲜水果" },
-      { id: 2, name: "蔬菜" },
-      { id: 3, name: "肉禽蛋类" },
-      { id: 4, name: "粮油米面" },
-      { id: 5, name: "休闲零食" },
-      { id: 6, name: "鲜花园艺" },
-      { id: 7, name: "居家百货" },
-      { id: 8, name: "本地生活" }
+    swiperCurrent: 0,
+    selectCurrent: 0,
+    categories: [{
+        id: 0,
+        name: "全部"
+      },
+      {
+        id: 1,
+        name: "新鲜水果"
+      },
+      {
+        id: 2,
+        name: "蔬菜"
+      },
+      {
+        id: 3,
+        name: "肉禽蛋类"
+      },
+      {
+        id: 4,
+        name: "粮油米面"
+      },
+      {
+        id: 5,
+        name: "休闲零食"
+      },
+      {
+        id: 6,
+        name: "鲜花园艺"
+      },
+      {
+        id: 7,
+        name: "居家百货"
+      },
+      {
+        id: 8,
+        name: "本地生活"
+      }
     ],
     activeCategoryId: 0,
-    goods:[],
-    scrollTop:"0",
-    loadingMoreHidden:true,
-    hasNoCoupons:true,
+    goods: [],
+    scrollTop: "0",
+    loadingMoreHidden: true,
+    hasNoCoupons: true,
     coupons: []
   },
 
-  tabClick: function (e) {
+  tabClick: function(e) {
     this.setData({
       activeCategoryId: e.currentTarget.id
     });
@@ -39,45 +65,44 @@ Page({
   },
   //事件处理函数
   swiperchange: function(e) {
-      //console.log(e.detail.current)
-       this.setData({  
-        swiperCurrent: e.detail.current  
-    })  
-  },
-  toDetailsTap:function(e){
-    wx.navigateTo({
-      url:"/pages/goods-details/index?id="+e.currentTarget.dataset.id
+    //console.log(e.detail.current)
+    this.setData({
+      swiperCurrent: e.detail.current
     })
   },
-  tapBanner: function(e) {
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
-      })
-    }
+  toDetailsTap: function(e) {
+    wx.navigateTo({
+      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+    })
+  },
+  addShopCart: function(e) {
+    wx.showToast({
+      title: e.currentTarget.dataset.id + "",
+    })
   },
   bindTypeTap: function(e) {
-     this.setData({  
-        selectCurrent: e.index  
-    })  
+    this.setData({
+      selectCurrent: e.index
+    })
   },
-  scroll: function (e) {
+  scroll: function(e) {
     //  console.log(e) ;
-    var that = this,scrollTop=that.data.scrollTop;
+    var that = this,
+      scrollTop = that.data.scrollTop;
     that.setData({
-      scrollTop:e.detail.scrollTop
+      scrollTop: e.detail.scrollTop
     })
     // console.log('e.detail.scrollTop:'+e.detail.scrollTop) ;
     // console.log('scrollTop:'+scrollTop)
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this
     that.getGoodsList(0);
     that.setData({
       activeCategoryId: 0
     });
   },
-  getGoodsList: function (categoryId) {
+  getGoodsList: function(categoryId) {
     // wx.showToast({
     //   title: "请求..",
     // })
@@ -87,14 +112,14 @@ Page({
     console.log(categoryId)
     var that = this;
     wx.request({
-      url: app.config.url +'/apigoods/list',
+      url: app.config.url + '/apigoods/list',
       data: {
         type: categoryId
       },
       success: function(res) {
         var goods = res.data.data;
         that.setData({
-          goods:goods,
+          goods: goods,
         });
         that.setData({
           loadingMoreHidden: false,
@@ -102,23 +127,23 @@ Page({
       }
     })
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: wx.getStorageSync('mallName') + '——' + app.globalData.shareProfile,
       path: '/pages/index/index',
-      success: function (res) {
+      success: function(res) {
         // 转发成功
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
   },
-  SearchInput: function (event) {
+  SearchInput: function(event) {
     console.log(event.detail.value);
-    
+
   },
-  addcar:function(e){
+  addcar: function(e) {
     console.log(e.currentTarget.dataset.id);
   }
 })

@@ -14,18 +14,17 @@ Page({
     this.getUserInfo();
   },
   getUserInfo: function(cb) {
-    var that = this
-    wx.login({
-      success: function() {
-        wx.getUserInfo({
-          success: function(res) {
-            that.setData({
-              userInfo: res.userInfo
-            });
-          }
-        })
-      }
-    })
+    var that = this   
+    var userInfo = wx.getStorageSync("userInfo")
+    if(userInfo){
+      that.setData({
+        userInfo: userInfo
+      });
+    }else{
+      wx.reLanch({
+        url: '/pages/login/login'
+      })
+    }
   },
   order1: function() {
     wx.navigateTo({

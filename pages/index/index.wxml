@@ -1,33 +1,35 @@
 <!--index.wxml-->
 <!--1px = 750/320 = 2.34rpx;-->
 <view class="index_top">
-<view class="Title">
-  <view class="pointa">
-    <view class='pointa_a'><image src="../../images/Car.jpg" ></image> <text class='wenzi'>这是文字内容</text> </view>
-   
-  </view>
+  <view class="Title">
+    <view class="pointa">
+      <view class='pointa_a'>
+        <image src="../../images/Car.jpg"></image>
+        <text class='wenzi'>这是文字内容</text> </view>
 
-   <view class="pointb">
-              
-          <view class="weui-search-bar">
-   <view class="weui-search-bar__form">
-    <view class="weui-search-bar__box">
-      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
-      <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
-        <icon type="clear" size="14"></icon>
+    </view>
+
+    <view class="pointb">
+
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
+            <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
+              <icon type="clear" size="14"></icon>
+            </view>
+          </view>
+        </view>
+        <view class="weui-search-bar__cancel-btn" bindtap="SearchConfirm">
+          <text wx:if="{{SearchData.value.length>0}}" data-key='search'>搜索</text>
+        </view>
       </view>
-    </view>
-  </view>
-    <view class="weui-search-bar__cancel-btn" bindtap="SearchConfirm">
-         <text wx:if="{{SearchData.value.length>0}}" data-key='search'>搜索</text>
-    </view>
-</view>
-     
-  </view>
-</view>
 
- <view class="type-container">
+    </view>
+  </view>
+
+  <view class="type-container">
     <scroll-view class="type-navbar" scroll-x="true">
       <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
         <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
@@ -35,33 +37,32 @@
         </view>
       </view>
     </scroll-view>
-  </view></view>
+  </view>
+</view>
 <view class="container">
- 
+
 
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-   
       <view class="img-box">
-       <view class='img_div'></view>
+        <view class='img_div'></view>
         <image src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
       <view class='txt_con'>
-        
-      <view class="goods-title">{{item.name}}</view>
-       <view class='st'>
+
+        <view class="goods-title">{{item.name}}</view>
+        <view class='st'>
           <view class="yushou">预售时间:{{item.stime}}</view>
-         <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
-       </view>
+          <view class='sale'>累计{{item.sale}}份/剩余{{item.surplus}}份</view>
+        </view>
         <view class="yushou">提货时间:{{item.etime}}</view>
-      <view class='jiage'>
-          <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
-          <icon catchtap='addcar' data-id="{{item.id}}" class="carimg iconfont icon-gouwucheman"></icon>
+        <view class='jiage'>
+          <view class="goods-price">￥{{item.price}}
+            <text>￥{{item.oldprice}}</text>
+          </view>
+          <icon catchtap='addcar' class="carimg iconfont icon-gouwucheman" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="addShopCart" data-id="{{items}}"></icon>
+        </view>
       </view>
-      </view>
-      <text></text>
-     
-      
     </view>
   </view>
   <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
