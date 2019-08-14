@@ -141,10 +141,8 @@ Page({
       }
     })
   },
+  //请求数据列表
   getGoodsList: function(categoryId) {
-    // wx.showToast({
-    //   title: "请求..",
-    // })
     if (categoryId == 0) {
       categoryId = "";
     }
@@ -157,14 +155,16 @@ Page({
         search: that.data.searchStr
       },
       success: function(res) {
-        var goods = res.data.data;
-        console.log(goods)
-        that.setData({
-          goods: goods,
-        });
-        that.setData({
-          loadingMoreHidden: false,
-        });
+        if (res.data.key == 200) {
+          var goods = res.data.data;
+          console.log(goods)
+          that.setData({
+            goods: goods,
+          });
+          that.setData({
+            loadingMoreHidden: false,
+          });
+        }
       }
     })
   },
