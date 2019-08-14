@@ -170,7 +170,7 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("https://www.puyuanjingxuan.com/img/wx/image_home.png") no-repeat center 21rpx;
+  background: url("https://www.puyuanjingxuan.com/img/wx/home-on.png") no-repeat center 21rpx;
   background-size: 55rpx auto;
 }
 
