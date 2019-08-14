@@ -1,7 +1,7 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
   <view class="swiper-container">
-    <view class='img_div'></view>
+    <view class='img_div' style="display:{{display}}"></view>
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />
   </view>
   <view class='sharnum'>

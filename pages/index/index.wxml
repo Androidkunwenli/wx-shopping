@@ -38,28 +38,27 @@
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
-        <view class='img_div'></view>
-        <image src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
+        <view class="img_div" wx:if="{{item.surplus==0}}"></view>
+        <image src="{{item.picture}} " class="image " mode="aspectFill " lazy-load="true " />
       </view>
-      <view class='txt_con'>
-
-        <view class="goods-title">{{item.name}}</view>
-        <view class='st'>
-          <view class="yushou">预售时间:{{item.stime}}</view>
-          <view class='sale'>累计
-            <text class='salenum'>{{item.sale}}</text>份/剩余
-            <text class='salenum'>{{item.surplus}}</text>份</view>
+      <view class='txt_con '>
+        <view class="goods-title ">{{item.name}}</view>
+        <view class='st '>
+          <view class="yushou ">预售时间:{{item.stime}}</view>
+          <view class='sale '>累计
+            <text class='salenum '>{{item.sale}}</text>份/剩余
+            <text class='salenum '>{{item.surplus}}</text>份</view>
 
         </view>
-        <view class="yushou">提货时间:{{item.etime}}</view>
-        <view class='jiage'>
-          <view class="goods-price">￥{{item.price}}
+        <view class="yushou ">提货时间:{{item.etime}}</view>
+        <view class='jiage '>
+          <view class="goods-price ">￥{{item.price}}
             <text>￥{{item.oldprice}}</text>
           </view>
-          <icon catchtap='addcar' class="carimg iconfont icon-gouwucheman" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="addShopCart" data-id="{{items}}"></icon>
+          <icon catchtap='addcar' data-item="{{item}}" class="carimg iconfont icon-gouwucheman "></icon>
         </view>
       </view>
     </view>
   </view>
-  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+  <view hidden="{{loadingMoreHidden ? true : false}} " class="no-more-goods ">没有更多啦</view>
 </view>

@@ -62,20 +62,23 @@ Page({
         if (res.data.key == 200) {
           var goodsDetail = res.data.data;
           that.data.goodsDetail = res.data.data;
+          var display = goodsDetail.surplus == 0 ? "block" : "none";
           that.setData({
             avatarUrl: goodsDetail.picture,
             commodityTitle: goodsDetail.name,
             selectSizePrice: goodsDetail.price,
             oldprice: goodsDetail.oldprice,
             sale: goodsDetail.sale,
-            total: goodsDetail.total,
+            total: goodsDetail.surplus,
             stime: goodsDetail.stime,
-            etime:goodsDetail.etime,
+            etime: goodsDetail.etime,
+            display: display
           });
           wx.setNavigationBarTitle({
             title: goodsDetail.name
           })
           WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
+
         } else {
           wx.navigateBack({})
         }
@@ -96,22 +99,29 @@ Page({
    * 加入购物车
    */
   toAddShopCar: function() {
-    //组建购物车
-    var shopCarInfo = this.bulidShopCarInfo();
-    this.setData({
-      shopCarInfo: shopCarInfo,
-      shopNum: shopCarInfo.shopNum
-    });
-    // 写入本地存储
-    wx.setStorage({
-      key: "shopCarInfo",
-      data: shopCarInfo
-    })
-    wx.showToast({
-      title: '加入购物车成功',
-      icon: 'success',
-      duration: 2000
-    })
+    var userInfo = wx.getStorageSync("userInfo")
+    if (userInfo) {
+      //组建购物车
+      var shopCarInfo = this.bulidShopCarInfo();
+      this.setData({
+        shopCarInfo: shopCarInfo,
+        shopNum: shopCarInfo.shopNum
+      });
+      // 写入本地存储
+      wx.setStorage({
+        key: "shopCarInfo",
+        data: shopCarInfo
+      })
+      wx.showToast({
+        title: '加入购物车成功',
+        icon: 'success',
+        duration: 2000
+      })
+    } else {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+    }
   },
   /**
    * 组建购物车信息
@@ -153,17 +163,23 @@ Page({
    * 立即购买
    */
   tobuy: function() {
-    //组建立即购买信息
-    var buyNowInfo = this.buliduBuyNowInfo();
-    // 写入本地存储
-    wx.setStorage({
-      key: "buyNowInfo",
-      data: buyNowInfo
-    })
-
-    wx.navigateTo({
-      url: "/pages/to-pay-order/index?orderType=buyNow"
-    })
+    var userInfo = wx.getStorageSync("userInfo")
+    if (userInfo) {
+      //组建立即购买信息
+      var buyNowInfo = this.buliduBuyNowInfo();
+      // 写入本地存储
+      wx.setStorage({
+        key: "buyNowInfo",
+        data: buyNowInfo
+      })
+      wx.navigateTo({
+        url: "/pages/to-pay-order/index?orderType=buyNow"
+      })
+    } else {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+    }
   },
   /**
    * 组建立即购买信息
