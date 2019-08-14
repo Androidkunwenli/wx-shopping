@@ -17,13 +17,13 @@
     height:100rpx;
     line-height: 100rpx;
     background-color: #fff;
-    background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 705rpx center;
+    background: url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 705rpx center;
     background-size: 15rpx auto;
 }
 .bottom-box .add-btn{
     margin-left: 30rpx;
     padding-left: 70rpx;
-    background: url(https://cdn.it120.cc/images/weappshop/add-addr.png) no-repeat left center;
+    background: url(https://www.puyuanjingxuan.com/img/wx/add-addr.png) no-repeat left center;
     background-size: 40rpx auto;
 }
 .coupons-item{

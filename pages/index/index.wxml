@@ -40,11 +40,12 @@
  
 
   <view class="goods-container">
-    <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+  
+    <view  class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
    
       <view class="img-box">
-       <view class='img_div'></view>
-        <image src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
+       <view class='img_div' wx:if="{{item.surplus==0}}"></view>
+        <image  src="{{item.picture}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
       <view class='txt_con'>
         
@@ -57,7 +58,8 @@
         <view class="yushou">提货时间:{{item.etime}}</view>
       <view class='jiage'>
           <view class="goods-price">￥{{item.price}} <text>￥{{item.oldprice}}</text></view>
-          <icon catchtap='addcar' data-id="{{item.id}}" class="carimg iconfont icon-gouwucheman"></icon>
+          <icon wx:if="{{item.surplus>0}}" catchtap='addcar' data-id="{{item.id}}" class="carimg iconfont icon-gouwucheman"></icon>
+          <icon wx:if="{{item.surplus==0}}" catchtap='addcar' data-id="{{item.id}}" class="carimg_1 iconfont icon-gouwucheman"></icon>
       </view>
       </view>
       <text></text>

@@ -12,7 +12,7 @@
   opacity:0.8;
   z-index: 999;
   position:absolute;
-  background:#313131 url(http://39.100.101.222/img/timg.png) no-repeat  center center;
+  background:#313131 url(https://www.puyuanjingxuan.com/img/wx/timg.png) no-repeat  center center;
   background-size: 420rpx 350rpx;
   display: none;
 }
@@ -117,7 +117,7 @@
   font-size: 28rpx;
   line-height: 102rpx;
   margin-bottom: 28rpx;
-  background: #fff url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 697rpx center;
+  background: #fff url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 697rpx center;
   background-size: 18rpx auto;
 }
 
@@ -170,7 +170,7 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("../../images/image_home.png") no-repeat center 21rpx;
+  background: url("https://www.puyuanjingxuan.com/img/wx/image_home.png") no-repeat center 21rpx;
   background-size: 55rpx auto;
 }
 
@@ -184,7 +184,7 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("https://cdn.it120.cc/images/weappshop/cart.png") no-repeat center 21rpx;
+  background: url("https://www.puyuanjingxuan.com/img/wx/cart.png") no-repeat center 21rpx;
   background-size: 44rpx auto;
 }
 
@@ -283,7 +283,7 @@
   width: 36rpx;
   height: 36rpx;
   flex: 1;
-  background: url("https://cdn.it120.cc/images/weappshop/popup-close.png") no-repeat center center;
+  background: url("https://www.puyuanjingxuan.com/img/wx/popup-close.png") no-repeat center center;
   background-size: 36rpx auto;
   align-self: flex-start;
   margin-top: -10rpx;

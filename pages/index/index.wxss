@@ -71,6 +71,8 @@
   justify-content: space-between;
   flex-wrap: wrap;
   box-sizing: content-box;
+  width: 100%;
+
 }
 
 .goods-box {
@@ -86,10 +88,10 @@
   opacity:0.8;
   z-index: 999;
   position:absolute;
-  background:#313131 url(http://z5m9pi.natappfree.cc/img/timg.png) no-repeat  center center;
+  background:#313131 url(https://www.puyuanjingxuan.com/img/wx/timg.png) no-repeat  center center;
   background-size: 420rpx 350rpx;
   border-radius: 30rpx;
-  display: none;
+  display: block;
 
 }
 
@@ -112,9 +114,10 @@
   margin-left: 25rpx;
 }
 .yushou{
-  width:65%;
-  font-size:30rpx;
+  width:63%;
+  font-size:26rpx;
   color:#e64340;
+  letter-spacing: 1rpx;
 }
 .tihuo{
    width:280rpx;
@@ -126,7 +129,8 @@
   margin-top: 5rpx;
 }
 .sale{
- font-size:30rpx;
+ font-size:26rpx;
+   letter-spacing: 1rpx;
 }
 .salenum{
   color:red;
@@ -151,6 +155,23 @@
 display:flex;                   
  justify-content: center;
  align-items: center;
+}
+.carimg_1{
+    width: 90rpx;
+  height: 90rpx;
+  margin-right:70rpx;
+   position: absolute;
+  z-index: 999;
+  right: 0;
+  top:-13rpx;
+  font-size: 60rpx;
+  color:  #313131;
+  border: 3rpx solid #313131;
+  border-radius: 50%;
+  display:flex;                   
+  justify-content: center;
+  align-items: center;
+
 }
 .num{
   border: 1rpx solid red;
@@ -181,7 +202,7 @@ display:flex;
 .goods-box .goods-price {
   width: 85%;
   overflow: hidden;
-  color: #e64340;
+  color: red;
   font-weight:600;
   margin: 15rpx 0 0 0;
   font-size: 35rpx;
