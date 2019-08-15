@@ -190,6 +190,13 @@ Page({
       console.log(goodsDetail);
       //组建购物车
       if (goodsDetail) {
+        if (goodsDetail.surplus == 0) {
+          wx.showToast({
+            title: '暂无库存',
+            icon: 'none',
+          })
+          return
+        }
         var shopCarInfo = this.bulidShopCarInfo(goodsDetail);
         if (shopCarInfo) {
           // 写入本地存储
@@ -205,8 +212,8 @@ Page({
         }
       }
     } else {
-      wx.reLanch({
-        url: '/pages/login/login'
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
       })
     }
   },
