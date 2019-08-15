@@ -35,7 +35,7 @@ Page({
   onLoad: function(e) {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -88,6 +88,23 @@ Page({
 
         } else {
           wx.navigateBack({})
+        }
+      }
+    })
+    wx.request({
+      url: app.config.url + '/apiorder/buyhis',
+      method: "POST",
+      data: {
+        goodsid: e.id
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function(res) {
+        if (res.data.key == 200) {
+          that.setData({
+            buyhis: res.data.data,
+          })
         }
       }
     })
