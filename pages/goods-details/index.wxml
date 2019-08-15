@@ -53,6 +53,12 @@
   </swiper>
    -->
   <view class='swiper_con' hidden="{{currentData != 0}}">
+    <view>商品详情</view>
+    <view>供货商： 杰士邦</view>
+    <view>规格： 3斤-4斤/个</view>
+    <view>品牌： 产地直供</view>
+    <view>产地： 温州</view>
+    <view>图文详情</view>
     <template ba is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 
