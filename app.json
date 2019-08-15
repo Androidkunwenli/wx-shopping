@@ -10,9 +10,7 @@
     "pages/order-details/index",
     "pages/mycoupons/index",
     "pages/my/index",
-    "pages/notice/show",
-    "pages/recharge/index",
-    "pages/withdraw/index"
+    "pages/nearby-address/index"
   ],
   "permission": {
     "scope.userLocation": {
