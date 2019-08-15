@@ -61,7 +61,7 @@
   </view>
 
   <view class='swiper_con' hidden="{{currentData != 2}}">
-    <image src='https://www.puyuanjingxuan.com/img/wx/liucheng.png'></image>
+    <image style="width: 100%;height: 600rpx;" src='https://www.puyuanjingxuan.com/img/wx/liucheng.png'></image>
   </view>
   <view class="footer-box">
     <view class="contact" src="../../images/image_home.png" bindtap="goHome">

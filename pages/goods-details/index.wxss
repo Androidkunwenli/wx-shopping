@@ -450,7 +450,7 @@ button::after {
 .swiper_con {
   text-align: center;
   width: 100%;
-  padding: 80rpx 0;
+  padding: 50rpx 0;
 }
 
 .tui-conutdown-box {
