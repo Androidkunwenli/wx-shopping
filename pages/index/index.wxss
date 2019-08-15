@@ -340,7 +340,7 @@
 }
 
 .Title {
-  height: 80rpx;
+  height: 100rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

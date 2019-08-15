@@ -5,9 +5,23 @@ var app = getApp();
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    type: 0,
   },
-  onLoad: function() {
+  onLoad: function(e) {
+    var type = e.type;
+    if (type) {
+      this.data.type = type;
+    } else {
+      this.data.type = 0;
+    }
+    // try {
+    //   wx.clearStorageSync()
+    // } catch (e) {
+    //   // Do something when catch error
+    // }
+  },
+  onShow: function() {
     // 页面加载时使用用户授权逻辑，弹出确认的框  
     this.userAuthorized()
   },
@@ -22,6 +36,7 @@ Page({
     }
   },
   onGetUserInfo(e) {
+    var that = this;
     wx.showLoading({
       title: '加载中...',
     })
@@ -55,9 +70,13 @@ Page({
                     wx.setStorageSync('skey', res.data.data.skey);
                     wx.setStorageSync('id', res.data.data.id);
                     wx.setStorageSync('openid', res.data.data.openid);
-                    wx.switchTab({
-                      url: '/pages/index/index'
-                    })
+                    if (that.data.type == 1) {
+                      wx.navigateBack({})
+                    } else {
+                      wx.switchTab({
+                        url: '/pages/index/index'
+                      })
+                    }
                   } else {
                     wx.showToast({
                       title: '登录失败!',

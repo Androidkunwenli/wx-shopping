@@ -14,15 +14,15 @@ Page({
     this.getUserInfo();
   },
   getUserInfo: function(cb) {
-    var that = this   
+    var that = this
     var userInfo = wx.getStorageSync("userInfo")
-    if(userInfo){
+    if (userInfo) {
       that.setData({
         userInfo: userInfo
       });
-    }else{
-      wx.reLanch({
-        url: '/pages/login/login'
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
       })
     }
   },

@@ -108,6 +108,13 @@ Page({
   toAddShopCar: function() {
     var userInfo = wx.getStorageSync("userInfo")
     if (userInfo) {
+      if (this.data.goodsDetail.surplus == 0) {
+        wx.showToast({
+          title: '暂无库存',
+          icon: 'none',
+        })
+        return
+      }
       //组建购物车
       var shopCarInfo = this.bulidShopCarInfo();
       this.setData({
@@ -125,8 +132,8 @@ Page({
         duration: 2000
       })
     } else {
-      wx.redirectTo({
-        url: '/pages/login/login'
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
       })
     }
   },
@@ -172,6 +179,13 @@ Page({
   tobuy: function() {
     var userInfo = wx.getStorageSync("userInfo")
     if (userInfo) {
+      if (this.data.goodsDetail.surplus == 0) {
+        wx.showToast({
+          title: '暂无库存',
+          icon: 'none',
+        })
+        return
+      }
       //组建立即购买信息
       var buyNowInfo = this.buliduBuyNowInfo();
       // 写入本地存储
@@ -183,8 +197,8 @@ Page({
         url: "/pages/to-pay-order/index?orderType=buyNow"
       })
     } else {
-      wx.redirectTo({
-        url: '/pages/login/login'
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
       })
     }
   },
@@ -208,7 +222,7 @@ Page({
   onShareAppMessage: function() {
     console.log("商品ID = " + this.data.goodsDetail.goodsid)
     return {
-      title: "分享标题",
+      title: this.data.goodsDetail.name,
       path: '/pages/goods-details/index?id=' + this.data.goodsDetail.goodsid,
       success: function(res) {
         // 转发成功
