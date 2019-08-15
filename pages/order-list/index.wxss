@@ -56,6 +56,7 @@
 }
 .order-list{
     width: 100%;
+    border-bottom: 22rpx solid rgb(241,241,241)
 }
 .order-list .a-order{
     width: 100%;
@@ -75,13 +76,19 @@
     font-size:26rpx;
     color:#e64340;
 }
+.beizhu{
+  padding: 25rpx 0;
+      border-top: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+      margin-left: 30rpx;
+}
 .a-order  .goods-info,
 .goods-img-container{
     width: 720rpx;
     margin-left: 30rpx;
     border-top: 1rpx solid #eee;
     border-bottom: 1rpx solid #eee;
-    padding: 30rpx 0;
+    padding: 10rpx 0 0 0 ;
     display: flex;
     align-items: center;
 }
@@ -100,16 +107,13 @@
 .goods-info  .goods-des{
     width: 540rpx;
     height: 78rpx;
-    line-height: 39rpx;
+    line-height: 78rpx;
     font-size:30rpx;
     color:#000000;
     overflow: hidden;
 }
-.dingdan{
-  padding: 10rpx 0;
-}
 .goods-img-container{
-    height: 180rpx;
+    height: 150rpx;
     box-sizing: border-box;
     white-space: nowrap;
 }
@@ -134,8 +138,9 @@
     font-size:26rpx;
 }
 .order-list .a-order .price-box .total-price{
-    font-size:26rpx;
-    color:#e64340;
+    font-size:30rpx;
+    color:red;
+    letter-spacing: -1rpx;
 }
 .a-order .price-box .btn{
     width: 166rpx;
@@ -153,6 +158,6 @@
     top:20rpx;
 }
 .a-order .price-box .topay-btn{
-    border:1px solid #e64340;
-    color: #e64340;
+    border:1px solid red;
+    color: red;
 }
