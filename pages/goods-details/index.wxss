@@ -425,12 +425,16 @@ button::after {
   float: left;
   width: 33.3333%;
   text-align: center;
-  font-size: 24rpx;
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #4d4c4c;
 }
 
 .topTabSwiper {
   zoom: 1;
   width: 100%;
+  background: #fff;
 }
 
 .topTabSwiper:after {
@@ -449,9 +453,10 @@ button::after {
 }
 
 .swiper_con {
-  text-align: center;
+  text-align: left;
   width: 100%;
   height: auto;
+  background: #fff;
 }
 
 .tui-conutdown-box {
@@ -460,4 +465,52 @@ button::after {
 
 .liucheng image {
   height: 600rpx;
+}
+.detail{
+  text-align: left;
+  height: 80rpx;
+  background: #fff;
+  border-left: 10rpx solid #FFA500;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+  color: #4d4c4c;
+}
+.detail_a{
+  padding: 30rpx 50rpx;
+    color: #4d4c4c;
+    background: #fff;
+    letter-spacing: 10rpx;
+    font-size: 26rpx;
+    border-top: 2rpx solid #eee;
+     border-bottom: 2rpx solid #eee;
+}
+.wxParse-img{
+  width: 100%;
+}
+.buy{
+   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 30rpx 20rpx;
+}
+.buy_a{
+  height: 80rpx;
+  border-radius: 50%;
+  width:80rpx;
+}
+.buy_b{
+  width: 60%;
+  padding-left: 40rpx;
+line-height: 50rpx;
+
+}
+.buy_c{
+  width: 20%;
+  line-height: 95rpx;
+text-align: center;
+
+}
+.buy_c text{
+  color:red;
+  padding: 15rpx
 }
