@@ -126,7 +126,7 @@
   margin-left: 25rpx;
 }
 .yushou{
-  width:63%;
+  width:58%;
   font-size:26rpx;
   color:#e64340;
   letter-spacing: 1rpx;
@@ -144,7 +144,11 @@
 }
 .sale{
  font-size:26rpx;
-   letter-spacing: 1rpx;
+    text-align: right;
+    width: 42%;
+    padding-right: 35rpx;
+
+
 }
 
 .salenum {

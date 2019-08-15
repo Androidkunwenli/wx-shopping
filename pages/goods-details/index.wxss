@@ -162,7 +162,7 @@
 
 .footer-box .contact {
   position: relative;
-  width: 120rpx;
+  width: 150rpx;
   height: 100%;
   line-height: 100rpx;
   text-align: center;
@@ -170,8 +170,9 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("https://www.puyuanjingxuan.com/img/wx/image_home.png") no-repeat center 21rpx;
+  background: url("https://www.puyuanjingxuan.com/img/wx/home-on.png") no-repeat center 21rpx;
   background-size: 55rpx auto;
+  border-right: 1rpx solid #b9b8b8;
 }
 
 .footer-box .shop-cart-btn {
@@ -184,15 +185,25 @@
   font-size: 20rpx;
   color: #acacb7;
   box-sizing: border-box;
-  background: url("https://www.puyuanjingxuan.com/img/wx/cart.png") no-repeat center 21rpx;
-  background-size: 44rpx auto;
+  background: url("https://www.puyuanjingxuan.com/img/wx/cart.png") no-repeat center 11rpx;
+  background-size: 80rpx auto;
 }
 
-.footer-box .shop-cart-btn .shop-num {
+.shop-num {
   position: absolute;
-  color: #e64340;
-  left: 80rpx;
-  top: -20rpx;
+  color: #fff;
+  left: 220rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: red;
+  font-size: 30rpx;
+   text-align: center;
+     display: flex;
+  justify-content: center;
+  align-items:center;
+  top:5rpx;
+  z-index: 99;
 }
 
 .footer-box .join-shop-cart {
