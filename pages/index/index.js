@@ -58,6 +58,15 @@ Page({
     searchStr: "",
     shopCarInfo: {},
   },
+  onPullDownRefresh: function() {
+    wx.startPullDownRefresh()
+
+    setTimeout(function() {
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);
+  },
+
   // 搜索
   searchConfirm: function(e) {
     var that = this;

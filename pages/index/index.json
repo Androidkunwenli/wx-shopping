@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "朴原精选"
+  "navigationBarTitleText": "朴原精选",
+  "enablePullDownRefresh": true
 }
