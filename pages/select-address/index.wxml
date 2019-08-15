@@ -1,15 +1,28 @@
 <view class="container">
+<view class="weizhi">
+  <image src="https://www.puyuanjingxuan.com/img/wx/pyjx.png"></image>
+  <view class="weizhi_n">
+      <view class="weizhi_a">当前位置</view>
+      <view class="weizhi_a">石家庄市长安区</view>
+      <view>
+      <icon class="tihuodian">
+        <text class="tihuodian_a  iconfont icon-shouye label">附近提货点</text>
+      </icon>
+      </view>
+  </view>
+</view>
   <view class="address-list">
     <view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
+     <view class="dangqian" wx:if="{{item.status==0}}"><image src="https://www.puyuanjingxuan.com/img/wx/dangqian.png"></image></view>
       <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.pointid}}">
        <image class="pic" src="{{item.avatarurl}}"></image>
         <view class="name-tel">
-          {{item.name}} {{item.postion}}
+          {{item.name}} 
         </view>
-        
+        <view class="name-tel">距离：{{item.postion}}</view>
       </view>
       <view class="address-box">
-          {{item.address}}
+         地址：{{item.address}}
         </view>
     </view>
   </view>

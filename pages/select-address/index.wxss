@@ -1,19 +1,57 @@
+@import "../../css/home.wxss";
 .container {
     background-color:#F2f2f2;
+}
+.weizhi{
+  position: relative ;
+}
+.weizhi image{
+  width: 750rpx;
+  height: 400rpx;
+}
+.weizhi_n{
+  width: 600rpx;
+  height: 300rpx;
+  border-radius: 50rpx;
+  background-color: #fff;
+ position: absolute;
+          left: 83rpx;
+          top: 200rpx;
+  font-size: 24rpx;
+}
+.weizhi_a{
+  text-align: center;
+  margin-top: 20rpx;
+    font-size: 24rpx;
+      color: #FFA500;
+}
+.tihuodian{
+  width: 300rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid #FFA500;
+  margin: 50rpx 150rpx;
+    font-size: 24rpx;
+      color: #FFA500;
+}
+.tihuodian_a{
+  padding:30rpx 70rpx;
+  color: #FFA500;
+  line-height: 80rpx;
+  letter-spacing: 5rpx;
+  font-size: 24rpx;
 }
 .address-list{
     width: 100%;
     background-color: #fff;
-    margin-top: 20rpx;
+    margin-top: 150rpx;
 }
 .address-list .a-address{
     width: 720rpx;
-    margin-left: 30rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30rpx 0;
+    margin-left: 75rpx;
+    padding: 20rpx 0;
     border-bottom: 1rpx solid #eee;
+    position: relative;
 }
 .a-address .left-text{
     width: 100%;
@@ -27,10 +65,12 @@
 }
 .a-address .left-text .name-tel{
     margin-bottom: 20rpx;
+    line-height: 95rpx;
+    padding-left: 20rpx;
 }
-.a-address .left-text .address-box{
-    font-size:24rpx;
-    color:#888888;
+.address-box{
+    font-size:26rpx;
+    color:rgb(139, 139, 139);
     line-height:36rpx;
 }
 .a-address .right-edit{
@@ -63,7 +103,15 @@
 .pic{
   width: 80rpx;
 height: 80rpx;
-margin: 20rpx;
 border-radius: 50%;
 
+}
+.dangqian{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dangqian image{
+  width: 50rpx;
+  height: 50rpx;
 }
