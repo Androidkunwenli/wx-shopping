@@ -58,15 +58,6 @@ Page({
     searchStr: "",
     shopCarInfo: {},
   },
-  onPullDownRefresh: function() {
-    wx.startPullDownRefresh()
-
-    setTimeout(function() {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    }, 1500);
-  },
-
   // 搜索
   searchConfirm: function(e) {
     var that = this;
@@ -152,6 +143,7 @@ Page({
   },
   //请求数据列表
   getGoodsList: function(categoryId) {
+    wx.showNavigationBarLoading();
     if (categoryId == 0) {
       categoryId = "";
     }
@@ -164,6 +156,7 @@ Page({
         search: that.data.searchStr
       },
       success: function(res) {
+        wx.hideNavigationBarLoading();
         if (res.data.key == 200) {
           var goods = res.data.data;
           console.log(goods)
@@ -179,7 +172,7 @@ Page({
   },
   onShareAppMessage: function() {
     return {
-      title: wx.getStorageSync('mallName') + '——' + app.globalData.shareProfile,
+      title: wx.getStorageSync('mallName'),
       path: '/pages/index/index',
       success: function(res) {
         // 转发成功
