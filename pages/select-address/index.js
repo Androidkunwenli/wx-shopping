@@ -1,16 +1,25 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+// 引入SDK核心类
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Page({
   data: {
-    addressList: []
+    addressList: [],
+    latitude: "",
+    longitude: "",
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  onLoad: function() {
+    // 实例化API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'CY4BZ-NAL3D-QSK4T-H2UFO-P6UAT-VOFG4'
+    });
+  },
+  nearbyAddress: function() {
+    wx.redirectTo({
+      url: '/pages/nearby-address/index?latitude=' + this.data.latitude + "&longitude=" + this.data.longitude,
+    })
   },
   selectTap: function(e) {
     wx.showLoading({
@@ -45,12 +54,13 @@ Page({
     })
     var that = this;
     wx.request({
-      url: app.config.url + "/apipoint/searchPoint",
+      url: app.config.url + "/apipoint/history",
       method: "POST",
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       data: {
+        userid: wx.getStorageSync("id"),
         x: e.latitude,
         y: e.longitude,
       },
@@ -124,15 +134,27 @@ Page({
     let vm = this;
     wx.getLocation({
       type: 'wgs84',
+      altitude: true,
       success: function(res) {
         console.log(JSON.stringify(res))
-        var latitude = res.latitude
-        var longitude = res.longitude
-        var speed = res.speed
-        var accuracy = res.accuracy;
-      },
-      success: function(res) {
+        vm.data.latitude = res.latitude;
+        vm.data.longitude = res.longitude;
         vm.initShippingAddress(res)
+        //解析经纬度
+        qqmapsdk.reverseGeocoder({
+          location: res.latitude + ',' + res.longitude,
+          success: function(res) {
+            vm.setData({
+              analysisAddress: res.result.address
+            })
+          },
+          fail: function(error) {
+            console.error(error);
+            vm.setData({
+              analysisAddress: "失败"
+            })
+          },
+        });
       },
       fail: function(res) {
         wx.showToast({

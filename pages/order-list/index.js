@@ -41,16 +41,17 @@ Page({
         if (res.confirm) {
           wx.showLoading();
           wx.request({
-            url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/close',
+            url: app.config.url + '/apiorder/cancleorder',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
             data: {
-              token: app.globalData.token,
-              orderId: orderId
+              orderid: orderId
             },
             success: (res) => {
               wx.hideLoading();
-              if (res.data.code == 0) {
-                that.onShow();
-              }
+              that.onShow();
             }
           })
         }
