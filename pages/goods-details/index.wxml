@@ -38,10 +38,10 @@
     <view class='tab {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>购买记录</view>
     <view class='tab {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>购买流程</view>
   </view>
-  <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
-    <swiper-item>
+  <swiper   current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
+    <swiper-item style="height: {{clientHeight?clientHeight+'px':'auto'}}">
       <view class='swiper_con'>
-        <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
+         <template ba is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
     </swiper-item>
 
@@ -49,8 +49,10 @@
       <view class='swiper_con'>这是个购买记录</view>
     </swiper-item>
 
-    <swiper-item>
-      <view class='swiper_con'>这是个关注页面</view>
+    <swiper-item  class="liucheng">
+    
+      <image src='https://www.puyuanjingxuan.com/img/wx/liucheng.png'></image>
+
     </swiper-item>
 
   </swiper>
