@@ -4,7 +4,7 @@
 .address-box{
     width: 100%;
     background: url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 705rpx center ,
-                url(https://www.puyuanjingxuan.com/img/addr-line.png) no-repeat center bottom;
+                url(https://www.puyuanjingxuan.com/img/wx/addr-line.png) no-repeat center bottom;
     background-size: 16rpx auto,750rpx auto;
     background-color: #fff;
     margin: 20rpx 0; 
@@ -16,7 +16,7 @@
     font-size: 28rpx;
     color: #000;
     margin-left: 30rpx;
-    background: url(https://www.puyuanjingxuan.com/img/ico-add-addr.png) no-repeat left center;
+    background: url(https://www.puyuanjingxuan.com/img/wx/ico-add-addr.png) no-repeat left center;
     background-size: 60rpx auto;
     padding: 40rpx 0 40rpx 90rpx; 
 }
@@ -24,7 +24,7 @@
     width: 664rpx;
     box-sizing: border-box;
     padding-left: 100rpx;
-    background: url(https://www.puyuanjingxuan.com/img/ico-addr.png) no-repeat 30rpx 35rpx;
+    background: url(https://www.puyuanjingxuan.com/img/wx/ico-addr.png) no-repeat 30rpx 35rpx;
     background-size: 60rpx auto;
 }
 .show-address .name-tel{

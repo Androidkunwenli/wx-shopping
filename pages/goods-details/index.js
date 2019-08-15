@@ -34,6 +34,13 @@ Page({
   },
   onLoad: function(e) {
     var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    })
     wx.showLoading({
       title: '加载中..',
       mask: true,
@@ -72,7 +79,7 @@ Page({
             total: goodsDetail.surplus,
             stime: goodsDetail.stime,
             etime: goodsDetail.etime,
-            display: display
+            display: display,
           });
           wx.setNavigationBarTitle({
             title: goodsDetail.name
