@@ -53,41 +53,33 @@
   </swiper>
    -->
   <view class='swiper_con' hidden="{{currentData != 0}}">
-    <view >
-    <view class="detail">商品详情</view>
-    <view class="detail_a">
-     <view>供货商： 杰士邦</view>
-        <view>规格： 3斤-4斤/个</view>
-    <view >品牌： 产地直供</view>
-    <view>产地： 温州</view>
-    </view>
-  
-    </view>
-    
     <view>
-     <view class="detail">图文详情</view>
-         <template ba is="wxParse" data="{{wxParseData:article.nodes}}" />
+      <view class="detail">商品详情</view>
+      <view class="detail_a">
+        <view>供货商： 杰士邦</view>
+        <view>规格： 3斤-4斤/个</view>
+        <view>品牌： 产地直供</view>
+        <view>产地： 温州</view>
+      </view>
     </view>
-
+    <view>
+      <view class="detail">图文详情</view>
+      <template ba is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
   </view>
 
   <view class='swiper_con' hidden="{{currentData != 1}}">
-    <view class='buy'>
-      <image class="buy_a" src="https://wx.qlogo.cn/mmopen/vi_32/ASLDQJAJJTjNNRPFWV5ANLNj5A3sLaLZhavwDwj6A1lUyDPuhGs9eOSUGvrlkLwOhhuM1gHO6GtVPPkaHXaE7w/132"></image>
-      <view class="buy_b" >
-          <view>张***</view>
-          <view>2019-01-01 00:00:00</view>
+    <block wx:for="{{buyhis}}" wx:key="{{index}}">
+      <view class='buy'>
+        <image class="buy_a" src="{{item.avatarurl}}"></image>
+        <view class="buy_b">
+          <view>{{item.nickname}}</view>
+          <view>{{item.stime}}</view>
+        </view>
+        <view class="buy_c">
+          <text>{{item.num}}</text>份</view>
       </view>
-      <view class="buy_c" ><text>2</text>份</view>
-    </view>
-     <view class='buy'>
-      <image class="buy_a" src="https://wx.qlogo.cn/mmopen/vi_32/ASLDQJAJJTjNNRPFWV5ANLNj5A3sLaLZhavwDwj6A1lUyDPuhGs9eOSUGvrlkLwOhhuM1gHO6GtVPPkaHXaE7w/132"></image>
-      <view class="buy_b" >
-          <view>张***</view>
-          <view>2019-01-01 00:00:00</view>
-      </view>
-      <view class="buy_c" ><text>2</text>份</view>
-    </view>
+    </block>
   </view>
 
   <view class='swiper_con' hidden="{{currentData != 2}}" style="margin-bottom: 100rpx;">
