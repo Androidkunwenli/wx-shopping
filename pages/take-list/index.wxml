@@ -1,5 +1,10 @@
 <view class="container">
-  <view bindtap="clickClose">回到首页</view>
+<view class="back">
+   <view class="to-index-btn"bindtap="clickClose">
+            回到首页
+    </view>
+</view>
+     
   <view class="status-box" hidden="false">
     <view bindtap="statusTap" class="status-label {{index == currentType ? 'active' : ''}}" wx:for-items="{{statusType}}" wx:key="{{index}}" data-index="{{index}}">
       {{item}}
