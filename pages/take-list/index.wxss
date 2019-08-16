@@ -174,3 +174,36 @@
 .back{
   margin-top: 50rpx;
 }
+.text-box{
+    width: 510rpx;
+    box-sizing: border-box;
+    padding-top: 10rpx;
+}
+.arow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .goods-name{
+     width: 360rpx;
+     font-size:29rpx;
+     height: 145rpx;
+     color:#000000;
+     line-height: 1.6;
+     overflow: hidden;
+     letter-spacing: 3rpx;
+
+ }
+.goods-price{
+    font-size:40rpx;
+    color:red;
+    align-self: flex-start;
+}
+.goods-label{
+    font-size: 26rpx;
+    color: #999;
+}
+.goods-num{
+    font-size:40rpx;
+    color: #999;
+}
