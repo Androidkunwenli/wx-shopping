@@ -61,20 +61,20 @@
       <view class="right-text">共计{{orderDetail.num}}件商品</view>
     </view>
     <view class="row-box">
-      <view class="row-label">配送方式</view>
+      <view class="row-label">配送方式:</view>
       <view class="right-text">到店自提</view>
     </view>
-    <view class="row-box">
+    <view class="row-box" wx:if="{{orderDetail.order.status!=''}}">
       <view class="row-label">备注：</view>
       <view class="right-text">
-        <view class="liuyan">{{status}}</view>
+        <view class="liuyan">{{orderDetail.order.status}}</view>
       </view>
     </view>
   </view>
   <view class="goods-info">
     <view class="row-box">
-      <view class="row-label">商品金额</view>
-      <view class="right-text">¥ {{yunPrice}}</view>
+      <view class="row-label">商品金额:</view>
+      <view class="right-text" style="color: red;font-size: 46rpx;">¥ {{yunPrice}}</view>
     </view>
   </view>
 </view>

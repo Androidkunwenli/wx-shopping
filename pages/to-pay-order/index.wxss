@@ -101,7 +101,6 @@ form{
 
  }
 .a-goods .text-box .arow01{
-    margin-bottom: 30rpx;
 }
 .a-goods .text-box .arow .goods-price{
     font-size:40rpx;
@@ -113,7 +112,7 @@ form{
     color: #999;
 }
 .a-goods .text-box .arow .goods-num{
-    font-size: 26rpx;
+    font-size:40rpx;
     color: #999;
 }
 .peisong-way{
@@ -197,8 +196,9 @@ form{
 }
 
 .jiesuan-box .total{
-    color: #e64340;
+    color: red;
     text-align: right;
+    font-size: 30rpx;
 }
 .zf{
   color:rgb(4, 243, 4);
