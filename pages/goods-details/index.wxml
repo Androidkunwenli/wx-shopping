@@ -25,6 +25,7 @@
         <view class="yushou">提货时间:{{etime}}</view>
       </view>
       <view class='retime_b tui-countdown-content'>剩:
+        <text class='tui-conutdown-box'>{{countDownDay}}</text>天
         <text class='tui-conutdown-box'>{{countDownHour}}</text>时
         <text class='tui-conutdown-box'>{{countDownMinute}}</text>分
         <text class='tui-conutdown-box'>{{countDownSecond}}</text>秒
@@ -56,10 +57,10 @@
     <view>
       <view class="detail">商品详情</view>
       <view class="detail_a">
-        <view>供货商： 杰士邦</view>
-        <view>规格： 3斤-4斤/个</view>
-        <view>品牌： 产地直供</view>
-        <view>产地： 温州</view>
+        <view>供货商： {{supplier}}</view>
+        <view>规格： {{spec}}</view>
+        <view>品牌： {{brand}}</view>
+        <view>产地： {{orign}}</view>
       </view>
     </view>
     <view>

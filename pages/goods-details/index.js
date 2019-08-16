@@ -80,12 +80,16 @@ Page({
             stime: goodsDetail.stime,
             etime: goodsDetail.etime,
             display: display,
+            supplier: goodsDetail.supplier,
+            spec: goodsDetail.spec,
+            brand: goodsDetail.brand,
+            orign: goodsDetail.orign,
           });
           wx.setNavigationBarTitle({
             title: goodsDetail.name
           })
           WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
-
+          that.onShowTime(goodsDetail.endtime);
         } else {
           wx.navigateBack({})
         }
@@ -268,8 +272,9 @@ Page({
       })
     }
   },
-  onReady: function() {
-    var totalSecond = Date.parse(new Date("2019/08/30")) / 1000 - Date.parse(new Date()) / 1000;
+  onShowTime: function(endtime) {
+    console.log(endtime)
+    var totalSecond = endtime / 1000 - new Date().getTime() / 1000;
     var interval = setInterval(function() {
       // 秒数
       var second = totalSecond;
@@ -290,10 +295,10 @@ Page({
       var secStr = sec.toString();
       if (secStr.length == 1) secStr = '0' + secStr;
       this.setData({
-        countDownDay: dayStr,
-        countDownHour: hrStr,
-        countDownMinute: minStr,
-        countDownSecond: secStr,
+        countDownDay: parseInt(dayStr),
+        countDownHour: parseInt(hrStr),
+        countDownMinute: parseInt(minStr),
+        countDownSecond: parseInt(secStr),
       });
       totalSecond--;
       if (totalSecond < 0) {
@@ -310,9 +315,4 @@ Page({
       }
     }.bind(this), 1000);
   },
-
-
-
-
-
 })

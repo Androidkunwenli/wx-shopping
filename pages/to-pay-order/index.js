@@ -111,6 +111,8 @@ Page({
       success: (res) => {
         wx.hideLoading()
         if (res.data.key == 200) {
+          // 清空购物车数据
+          wx.removeStorageSync('shopCarInfo');
           console.log("提交订单" + JSON.stringify(data))
           wx.showLoading({
             title: '去支付...',
