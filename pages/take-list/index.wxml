@@ -26,7 +26,18 @@
       <view>
         <scroll-view class="goods-img-container" scroll-x="true">
           <view class="img-box" wx:for-items="{{goodsMap[item.id]}}" wx:key="{{index}}">
-            <image src="{{item.picture}}" class="goods-img"></image>
+            <view class="img-box"><image src="{{item.picture}}" class="goods-img"></image></view>
+            
+              <view class="text-box">
+          <view class="arow arow01">
+            <view class="goods-name">{{item.name}}</view>
+            <view class="goods-price">¥ {{item.price}}</view>
+          </view>
+          <view class="arow">
+            <view class="goods-label">{{item.label}}</view>
+            <view class="goods-num">x {{item.num}}</view>
+          </view>
+        </view>
           </view>
         </scroll-view>
       </view>
