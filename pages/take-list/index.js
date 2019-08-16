@@ -103,7 +103,7 @@ Page({
   },
   clickClose: function(e) {
     wx.switchTab({
-      url: '/pages/my/index'
+      url: '/pages/index/index'
     })
   },
 })

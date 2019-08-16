@@ -479,7 +479,7 @@ button::after {
   padding: 30rpx 50rpx;
     color: #4d4c4c;
     background: #fff;
-    letter-spacing: 10rpx;
+    letter-spacing: 5rpx;
     font-size: 26rpx;
     border-top: 2rpx solid #eee;
      border-bottom: 2rpx solid #eee;

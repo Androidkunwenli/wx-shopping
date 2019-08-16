@@ -37,7 +37,7 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    top: 88rpx;
+    top: 118rpx;
     left: 0;
     right: 0;
     text-align: center;
@@ -160,4 +160,17 @@
 .a-order .price-box .topay-btn{
     border:1px solid red;
     color: red;
+}
+.to-index-btn{
+    color:#fff;
+    background:#FFA500;
+    border-radius:6px;
+    width:300rpx;
+    height:70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size:28rpx;
+}
+.back{
+  margin-top: 50rpx;
 }
