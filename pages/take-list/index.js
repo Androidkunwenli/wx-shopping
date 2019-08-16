@@ -3,18 +3,18 @@ Page({
   data: {
     statusType: ["未提货", "已提货"],
     currentType: 0,
-    openid: null,
+    userid: null,
   },
   //点击非全部订单
   onLoad: function(e) {
     var scene = decodeURIComponent(e.q);
     console.log(scene);
-    var openid = scene.split('/');
-    this.data.openid = openid[openid.length - 1]
+    var userid = scene.split('/');
     wx.showToast({
-      title: "二维码参数" + openid,
+      title: "二维码参数" + scene,
       icon: "none"
     })
+    this.data.userid = userid[userid.length - 1].split('?')[1]
   },
   statusTap: function(e) {
     var curType = e.currentTarget.dataset.index;
@@ -63,8 +63,8 @@ Page({
       title: '加载中..',
     });
     var that = this;
-    var openid = this.data.openid;
-    if (!openid) {
+    var userid = this.data.userid;
+    if (!userid) {
       wx.showToast({
         title: '获取失败',
         icon: "none",
@@ -79,8 +79,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        userid: wx.getStorageSync("id"),
-        openid: openid,
+        userid: userid,
+        openid: wx.getStorageSync("openid"),
       },
       success: (res) => {
         wx.hideLoading();
