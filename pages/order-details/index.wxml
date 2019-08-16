@@ -15,11 +15,15 @@
         </view> -->
     <block wx:if="{{orderDetail.order}}">
       <view class="address-sec">
+       <view class="list-title">商品信息</view>
         <view class="icon-box">
+        
           <image class="icon" src="/images/order-details/icon-address.png"></image>
         </view>
         <view class="right-box">
-          <view class="name-tel">{{orderDetail.order.name}} {{orderDetail.order.mobile}}</view>
+          <view class="name-tel">
+          {{orderDetail.order.name}} 
+          {{orderDetail.order.tel}}</view>
           <view class="text">
             {{orderDetail.order.address}}
           </view>

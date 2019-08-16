@@ -18,10 +18,10 @@
       </view>
       <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.pointid}}">
         <image class="pic" src="{{item.avatarurl}}"></image>
-        <view class="name-tel">
+        <view class="name-tel" style="width: 40%;">
           {{item.name}}
         </view>
-        <view class="name-tel">距离：{{item.local}}</view>
+        <view class="name-tel" style="color:red;">距您{{item.local}}m</view>
       </view>
       <view class="address-box">
         地址：{{item.address}}

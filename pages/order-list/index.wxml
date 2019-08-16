@@ -10,9 +10,8 @@
     <view class="text">暂无订单</view>
   </view>
   <view class="order-list" hidden="{{orderList ? false : true}}">
-    <view class="a-order" bindtap="orderDetail"  wx:for-items="{{orderList}}" wx:key="{{index}}">
-
-      <view class="goods-info" data-id="{{item.orderid}}">
+    <view class="a-order" bindtap="orderDetail" data-id="{{item.orderid}}"  wx:for-items="{{orderList}}" wx:key="{{index}}">
+      <view class="goods-info" >
         <view class="goods-des">
           <view class="dingdan">订单号：{{item.orderid}} </view>
           <view class="status" wx:if="{{item.is_pay==0}}">未付款</view>
@@ -28,7 +27,7 @@
           </view>
         </scroll-view>
       </view>
-      <view class="beizhu">订单时间： {{item.stime}}</view>
+      <view class="beizhu">下单时间： {{item.stime}}</view>
       <view class="beizhu" wx:if="{{item.status && item.status != ''}}">备注： {{item.status}}</view>
 
       <view class="price-box">

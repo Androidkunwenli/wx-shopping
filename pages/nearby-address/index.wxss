@@ -5,7 +5,6 @@
 }
 .address-list .a-address{
     width: 720rpx;
-    margin-left: 75rpx;
     padding: 20rpx 0;
     border-bottom: 1rpx solid #eee;
     position: relative;
@@ -29,6 +28,7 @@
     font-size:26rpx;
     color:rgb(139, 139, 139);
     line-height:36rpx;
+    margin-left: 75rpx;
 }
 .a-address .right-edit{
     width: 109rpx;
@@ -61,7 +61,15 @@
   width: 80rpx;
 height: 80rpx;
 border-radius: 50%;
+margin-left: 75rpx;
 
+}
+.name{
+  width: 40%;
+}
+.postion{
+  width: 30%;
+  color: #FFA500;
 }
 .dangqian{
   position: absolute;

@@ -2,10 +2,10 @@
   <view class="a-address" wx:for-items="{{addressList}}" wx:key="{{index}}">
     <view class="left-text {{item.isDefault? 'active':''}}" bindtap="selectTap" data-id="{{item.pointid}}">
       <image class="pic" src="{{item.avatarurl}}"></image>
-      <view class="name-tel">
+      <view class="name name-tel">
         {{item.name}}
       </view>
-      <view class="name-tel">距离：{{item.postion}}</view>
+      <view class="postion name-tel">距您{{item.postion}}m</view>
     </view>
     <view class="address-box">
       地址：{{item.address}}
