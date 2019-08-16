@@ -68,7 +68,7 @@
     </view>
   </view>
 
-  <view class='swiper_con' hidden="{{currentData != 1}}">
+  <view class='swiper_con' hidden="{{currentData != 1}}" style="margin-bottom: 150rpx;">
     <block wx:for="{{buyhis}}" wx:key="{{index}}">
       <view class='buy'>
         <image class="buy_a" src="{{item.avatarurl}}"></image>
@@ -88,7 +88,7 @@
   <view class="footer-box">
     <view class="contact" src="../../images/image_home.png" bindtap="goHome">
     </view>
-    <view class="shop-num">{{shopNum}}</view>
+    <view class="shop-num" bindtap="goShopCar">{{shopNum}}</view>
     <view class="shop-cart-btn" bindtap="goShopCar">
     </view>
     <view class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>

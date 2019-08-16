@@ -2,15 +2,18 @@
   <form bindsubmit="createOrder" report-submit="true">
     <view class="address-box" wx:if="{{isNeedLogistics > 0}}">
       <view class="add-address" hidden="{{curAddressData}}">
-        <view class="title" bindtap="addAddress">新增收货地址</view>
+        <view class="title" bindtap="addAddress">新增取货地址</view>
       </view>
       <view class="show-address" hidden="{{!curAddressData}}" bindtap="selectAddress">
-        <view class="name-tel">{{curAddressData.name}}</view>
+        <image class="show-address-a" src="{{curAddressData.avatarurl}}"></image>
+        <view class="show-address-b">
+          <view class="name-tel">{{curAddressData.name}}</view>
         <view class="addr-text">{{curAddressData.address}}</view>
+        </view>
       </view>
     </view>
     <view class="goods-list">
-      <view class="list-title">商品列表</view>
+      <view class="list-title">自取商品</view>
       <view class="a-goods" wx:for-items="{{goodsList}}" wx:key="{{index}}">
         <view class="img-box">
           <image src="{{item.pic}}" class="img" />
@@ -37,8 +40,10 @@
           <input name="remark" type="text" class="liuyan" placeholder="如需备注请输入" />
         </view>
       </view>
+       <view class="row-box zzz">支付方式：<icon class="zf iconfont icon-weixinzhifu"></icon><text class="zhifu">微信支付</text></view>
+
     </view>
-    <view class="jiesuan-box">
+       <view class="jiesuan-box">
       <view class="left-price">
         <view class="total">合计：¥ {{allGoodsAndYunPrice}}</view>
       </view>

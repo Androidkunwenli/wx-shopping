@@ -1,5 +1,5 @@
 .container {
-    background-color:#F2f2f2;
+    background-color:#fff;
 }
 .coupons-list{
     width: 100%;
@@ -35,4 +35,7 @@
   font-size: 30rpx;
   line-height: 50rpx;
   color: #fff;
+}
+.youhui{
+  height: 100rpx;margin-top:70rpx;color:#000000;background-color:#fff;
 }

@@ -37,6 +37,7 @@
 
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+    <view class="supplier"><icon class="supplier_ico iconfont icon-crmxitongy-"></icon>本商品由{{item.supplier}}提供</view>
       <view class="img-box">
         <view class="img_div" wx:if="{{item.surplus==0}}"></view>
         <image src="{{item.picture}} " class="image " mode="aspectFill " lazy-load="true " />

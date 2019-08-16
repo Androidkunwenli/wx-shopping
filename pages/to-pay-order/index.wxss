@@ -1,3 +1,4 @@
+@import "../../css/home.wxss";
 .container{
     background-color:#F2f2f2;
 }
@@ -23,9 +24,16 @@
 .show-address{
     width: 664rpx;
     box-sizing: border-box;
-    padding-left: 100rpx;
-    background: url(https://www.puyuanjingxuan.com/img/wx/ico-addr.png) no-repeat 30rpx 35rpx;
     background-size: 60rpx auto;
+    display:flex;                  
+    justify-content: left;  
+}
+.show-address-a{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin:38rpx;
+    
 }
 .show-address .name-tel{
     font-size: 28rpx;
@@ -116,7 +124,7 @@ form{
 .peisong-way .row-box{
     width: 720rpx;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: center;
     box-sizing: border-box;
     padding: 24rpx 0 24rpx 30rpx;
@@ -124,7 +132,7 @@ form{
 }
 .peisong-way .row-label{
     font-size: 26rpx;
-    color: #000;
+    color: #666;
     letter-spacing: 5rpx;
 }
 .peisong-way .right-text{
@@ -191,4 +199,16 @@ form{
 .jiesuan-box .total{
     color: #e64340;
     text-align: right;
+}
+.zf{
+  color:rgb(4, 243, 4);
+  font-size: 50rpx;
+  margin-right: 20rpx;
+}
+.zhifu{
+  font-size: 32rpx;
+}
+.zzz{
+  font-size: 26rpx;
+  color:#666;
 }

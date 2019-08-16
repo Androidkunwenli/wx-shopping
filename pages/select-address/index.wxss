@@ -1,6 +1,7 @@
 @import "../../css/home.wxss";
 .container {
     background-color:#F2f2f2;
+    overflow-x:hidden;
 }
 .weizhi{
   position: relative ;
@@ -47,8 +48,8 @@
     margin-top: 150rpx;
 }
 .address-list .a-address{
-    width: 720rpx;
-    margin-left: 75rpx;
+    width: 100%;
+    margin-left: 35rpx;
     padding: 20rpx 0;
     border-bottom: 1rpx solid #eee;
     position: relative;
@@ -108,10 +109,10 @@ border-radius: 50%;
 }
 .dangqian{
   position: absolute;
-  right: 0;
+  right: 50rpx;
   top: 0;
 }
 .dangqian image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
