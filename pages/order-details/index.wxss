@@ -56,6 +56,7 @@ page{
     display: flex;
     align-items: center;
     padding: 30rpx 0;
+    font-size: 26rpx;
 }
 .address-sec .icon-box{
     width: 30rpx;
@@ -135,6 +136,7 @@ page{
     color: red;
     padding: 30rpx 0 25rpx 30rpx;
     border-bottom: 1px solid #eee;
+border-left: 5rpx solid #FFA500;
 
 }
 .goods-list  .a-goods{
@@ -196,8 +198,8 @@ page{
     margin-bottom: 30rpx;
 }
 .a-goods .text-box .arow .goods-price{
-    font-size:26rpx;
-    color:#000000;
+    font-size:40rpx;
+    color:red;
     align-self: flex-start;
 }
 .a-goods .text-box .arow .goods-label{
@@ -205,7 +207,7 @@ page{
     color: #999;
 }
 .a-goods .text-box .arow .goods-num{
-    font-size: 26rpx;
+    font-size: 40rpx;
     color: #999;
 }
 .peisong-way{
@@ -224,11 +226,11 @@ page{
     margin-left: 30rpx;
 }
 .peisong-way .row-label{
-    font-size: 28rpx;
-    color: #000;
+    font-size: 26rpx;
+    color: #666;
 }
 .peisong-way .right-text{
-    font-size: 28rpx;
+    font-size: 26rpx;
     color: #666;
     padding-right: 30rpx;
 }

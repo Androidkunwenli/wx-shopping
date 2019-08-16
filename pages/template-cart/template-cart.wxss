@@ -101,8 +101,8 @@ page{
     margin: 8rpx 0 25rpx 0;
 }
 .goods-info .text-box .goods-price{
-    font-size: 26rpx;
-    color:#e64340;
+    font-size: 40rpx;
+    color:red;
 }
 .goods-info .text-box .buy-num{
     width: 164rpx;
@@ -214,5 +214,6 @@ page{
     background-size: 40rpx auto; 
 }
 .jiesuan-box .total{
-    color: #e64340;
+    color: red;
+    font-size: 30rpx;
 }
