@@ -5,7 +5,7 @@
       <view class="name name-tel">
         {{item.name}}
       </view>
-      <view class="postion name-tel">距您{{item.postion}}m</view>
+      <view class="postion name-tel">距您{{item.postion}}</view>
     </view>
     <view class="address-box">
       地址：{{item.address}}
