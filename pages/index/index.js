@@ -58,6 +58,7 @@ Page({
     searchStr: "",
     shopCarInfo: {},
   },
+
   // 搜索
   searchConfirm: function(e) {
     var that = this;
@@ -159,7 +160,6 @@ Page({
         wx.hideNavigationBarLoading();
         if (res.data.key == 200) {
           var goods = res.data.data;
-          console.log(goods)
           that.setData({
             goods: goods,
           });
