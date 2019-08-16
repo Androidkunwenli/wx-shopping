@@ -21,7 +21,7 @@
         <view class="name-tel" style="width: 40%;">
           {{item.name}}
         </view>
-        <view class="name-tel" style="color:red;">距您{{item.local}}m</view>
+        <view class="name-tel" style="color:red;">距您{{item.local}}</view>
       </view>
       <view class="address-box">
         地址：{{item.address}}
