@@ -48,10 +48,6 @@ Page({
     that.getUserLocation();
   },
   initShippingAddress: function(e) {
-    wx.showLoading({
-      title: '加载中..',
-      mask: true,
-    })
     var that = this;
     wx.request({
       url: app.config.url + "/apipoint/history",
@@ -75,13 +71,21 @@ Page({
             addressList: null
           });
         }
-      }
+      },
+      fail: () => {
+        wx.hideLoading();
+      },
     })
   },
   getUserLocation: function() {
     let vm = this;
+    wx.showLoading({
+      title: '加载中..',
+      mask: true,
+    })
     wx.getSetting({
       fail: () => {
+        wx.hideLoading();
         wx.showToast({
           title: '获取定位失败，请打开定位，重新进入！',
           icon: 'none',
@@ -93,22 +97,29 @@ Page({
         // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
         // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
         if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+          wx.hideLoading();
           wx.showModal({
             title: '请求授权当前位置',
             content: '需要获取您的地理位置，请确认授权',
             success: function(res) {
               if (res.cancel) {
+                wx.hideLoading();
                 wx.showToast({
                   title: '获取定位失败，请打开定位，重新进入！',
                   icon: 'none',
                 })
               } else if (res.confirm) {
+                wx.showLoading({
+                  title: '加载中..',
+                  mask: true,
+                });
                 wx.openSetting({
                   success: function(dataAu) {
                     if (dataAu.authSetting["scope.userLocation"] == true) {
                       //再次授权，调用wx.getLocation的API
                       vm.getLocation();
                     } else {
+                      wx.hideLoading();
                       wx.showToast({
                         title: '获取定位失败，请打开定位，重新进入！',
                         icon: 'none',
@@ -134,7 +145,6 @@ Page({
     let vm = this;
     wx.getLocation({
       type: 'wgs84',
-      altitude: true,
       success: function(res) {
         console.log(JSON.stringify(res))
         vm.data.latitude = res.latitude;
@@ -149,6 +159,7 @@ Page({
             })
           },
           fail: function(error) {
+            wx.hideLoading();
             console.error(error);
             vm.setData({
               analysisAddress: "失败"
@@ -157,6 +168,7 @@ Page({
         });
       },
       fail: function(res) {
+        wx.hideLoading();
         wx.showToast({
           title: '获取定位失败，请打开定位，重新进入！',
           icon: 'none',
