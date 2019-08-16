@@ -41,7 +41,6 @@
   background: url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 710rpx center;
   background-size: 16rpx auto, 710rpx auto;
   line-height: 100rpx;
-  padding-left: 50rpx;
   font-size: 30rpx;
     border-bottom:  1rpx solid rgb(221, 221, 221);
       display: flex;
@@ -64,6 +63,8 @@
   width: 100%;
   letter-spacing: 3rpx;
   font-size: 30rpx;
+  padding-left: 50rpx;
+
 }
 .tihuo_icon{
   margin-right: 20rpx;

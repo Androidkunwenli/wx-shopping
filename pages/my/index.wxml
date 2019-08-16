@@ -23,17 +23,17 @@
   </view>
   <view style="height:20rpx;background: #f1f1f1;width:100%;"></view>
   <view class="my-item">
-    <view class='iconfont icon-tihuoshenqing tihuo_icon'></view>
-    <navigator class='tihuo' url="/pages/select-address/index" hover-class="navigator-hover">提货地点</navigator>
+    
+    <navigator class='tihuo' url="/pages/select-address/index"><icon class='iconfont icon-tihuoshenqing tihuo_icon'></icon>提货地点</navigator>
   </view>
   <view class="my-item">
-    <view class='iconfont icon-youhuiquan tihuo_icon'></view>
-    <navigator class=' tihuo' url="/pages/order-list/index" hover-class="navigator-hover"> 我的优惠券</navigator>
+    
+    <navigator class=' tihuo' url="/pages/mycoupons/index"><icon class='iconfont icon-youhuiquan tihuo_icon'></icon>我的优惠券</navigator>
   </view>
   <view style="height:20rpx;background: #f1f1f1;width:100%;"></view>
   <view class="my-item">
-    <navigator class='tihuo' url="/pages/order-list/index" hover-class="navigator-hover">提货二维码
+    <view class='tihuo'>提货二维码
       <text class='tip'>（提货时向团长出示此二维码提货）</text>
-    </navigator>
+    </view>
   </view>
 </view>
