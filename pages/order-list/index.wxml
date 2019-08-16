@@ -10,25 +10,25 @@
     <view class="text">暂无订单</view>
   </view>
   <view class="order-list" hidden="{{orderList ? false : true}}">
-    <view class="a-order" bindtap="orderDetail" data-id="{{item.orderid}}"  wx:for-items="{{orderList}}" wx:key="{{index}}">
-      <view class="goods-info" >
+    <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}">
+      <view class="goods-info" bindtap="orderDetail" data-id="{{item.orderid}}">
         <view class="goods-des">
           <view class="dingdan">订单号：{{item.orderid}} </view>
           <view class="status" wx:if="{{item.is_pay==0}}">未付款</view>
-           <view class="status" wx:if="{{item.is_pay==1}}">待提货</view>
-            <view class="status" wx:if="{{item.is_pay==2}}">已完成</view>
-             <view class="status" wx:if="{{item.is_pay==3}}">已取消</view>
+          <view class="status" wx:if="{{item.is_pay==1}}">待提货</view>
+          <view class="status" wx:if="{{item.is_pay==2}}">已完成</view>
+          <view class="status" wx:if="{{item.is_pay==3}}">已取消</view>
         </view>
       </view>
-      <view>
+      <view bindtap="orderDetail" data-id="{{item.orderid}}">
         <scroll-view class="goods-img-container" scroll-x="true">
           <view class="img-box" wx:for-items="{{goodsMap[item.id]}}" wx:key="{{index}}">
             <image src="{{item.picture}}" class="goods-img"></image>
           </view>
         </scroll-view>
       </view>
-      <view class="beizhu">下单时间： {{item.stime}}</view>
-      <view class="beizhu" wx:if="{{item.status && item.status != ''}}">备注： {{item.status}}</view>
+      <view class="beizhu" bindtap="orderDetail" data-id="{{item.orderid}}">下单时间： {{item.stime}}</view>
+      <view class="beizhu" bindtap="orderDetail" data-id="{{item.orderid}}" wx:if="{{item.status && item.status != ''}}">备注： {{item.status}}</view>
 
       <view class="price-box">
         <view class="total-price">合计：¥ {{item.pay_price}}</view>

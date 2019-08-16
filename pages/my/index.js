@@ -79,7 +79,8 @@ Page({
   },
   order1: function() {
     wx.navigateTo({
-      url: '/pages/order-list/index?id=1',
+      // url: '/pages/take-list/index?id=1',
+      url: '/pages/order-list/index?id=0',
     })
   },
   order2: function() {

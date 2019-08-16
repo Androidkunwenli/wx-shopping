@@ -14,12 +14,15 @@
             </view>
         </view> -->
     <block wx:if="{{orderDetail.order}}">
-     <view class="list-title">已取消</view>
+      <view class="list-title" wx:if="{{orderDetail.order.is_pay==0}}">未付款</view>
+      <view class="list-title" wx:if="{{orderDetail.order.is_pay==1}}">待提货</view>
+      <view class="list-title" wx:if="{{orderDetail.order.is_pay==2}}">已完成</view>
+      <view class="list-title" wx:if="{{orderDetail.order.is_pay==3}}">已取消</view>
       <view class="address-sec">
         <view class="right-box">
           <view class="text">
-         自提点：{{orderDetail.order.name}} 
-          {{orderDetail.order.tel}}</view>
+            自提点：{{orderDetail.order.name}} {{orderDetail.order.tel}}
+          </view>
           <view class="text">
             提货地点: {{orderDetail.order.address}}
           </view>
@@ -53,7 +56,7 @@
     </form>
   </view>
   <view class="peisong-way">
-   <view class="row-box">
+    <view class="row-box">
       <view class="row-label">订单编号：{{orderDetail.order.orderid}}</view>
       <view class="right-text">共计{{orderDetail.num}}件商品</view>
     </view>
