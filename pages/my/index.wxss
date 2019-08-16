@@ -1,5 +1,6 @@
 @import "../../css/tihuo.wxss";
 @import "../../css/home.wxss";
+
 .container {
   min-height: 100%;
   overflow: hidden;
@@ -8,8 +9,8 @@
 
 .userinfo {
   align-items: center;
-  background: #FFA500;
-  width:100%;
+  background: #ffa500;
+  width: 100%;
   display: flex;
   justify-content: left;
 }
@@ -24,7 +25,7 @@
 .userinfo-nickname {
   margin-top: 20rpx;
   color: #fff;
-  margin:55rpx 20rpx;
+  margin: 55rpx 20rpx;
 }
 
 .version {
@@ -43,53 +44,67 @@
   line-height: 100rpx;
   padding-left: 50rpx;
   font-size: 30rpx;
-    border-bottom:  1rpx solid rgb(221, 221, 221);
-      display: flex;
+  border-bottom: 1rpx solid rgb(221, 221, 221);
+  display: flex;
   justify-content: left;
 }
-.my-order{
-    width: 100%;
+
+.my-order {
+  width: 100%;
   line-height: 100rpx;
   font-size: 30rpx;
-  border-bottom:  1rpx solid rgb(221, 221, 221);
+  border-bottom: 1rpx solid rgb(221, 221, 221);
 }
-.order_nav{
-     border-bottom:  1rpx solid rgb(221, 221, 221);
-    padding-left: 50rpx;
-      background: url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 710rpx center;
+
+.order_nav {
+  border-bottom: 1rpx solid rgb(221, 221, 221);
+  padding-left: 50rpx;
+  background: url(https://www.puyuanjingxuan.com/img/wx/arrow-right.png) no-repeat 710rpx center;
   background-size: 16rpx auto, 710rpx auto;
-  
 }
-.tihuo{
+
+.tihuo {
   width: 100%;
   letter-spacing: 3rpx;
   font-size: 30rpx;
 }
-.tihuo_icon{
+
+.tihuo_icon {
   margin-right: 20rpx;
-  color: rgb(163, 162, 162)
+  color: rgb(163, 162, 162);
 }
-.status{
- width: 33.3%
+
+.status {
+  width: 33.3%;
 }
-.order_st{
+
+.order_st {
   display: flex;
   justify-content: center;
   text-align: center;
 }
-.icon-daifukuan{
+
+.icon-daifukuan {
   font-size: 66rpx;
-  color:#FFA500;
-}
-.icon-daitihuo{
-  font-size: 66rpx;
-  color:#FFA500;
-}
-.icon-yiwancheng{
-  font-size: 66rpx;
-  color:#FFA500;
-}
-.tip{
-  color:red;
+  color: #ffa500;
 }
 
+.icon-daitihuo {
+  font-size: 66rpx;
+  color: #ffa500;
+}
+
+.icon-yiwancheng {
+  font-size: 66rpx;
+  color: #ffa500;
+}
+
+.tip {
+  color: red;
+}
+
+.canvas-box {
+  position: fixed;
+  top: 999999rpx;
+  left: 0;
+}

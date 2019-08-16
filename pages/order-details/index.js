@@ -31,7 +31,7 @@ Page({
           var yunPrice = 0
           var goodList = that.data.orderDetail.goods
           for (var item in goodList) {
-            yunPrice += parseFloat(goodList[item].oldprice) * goodList[item].num;
+            yunPrice += parseFloat(goodList[item].price) * goodList[item].num;
           }
           that.setData({
             yunPrice: yunPrice,
