@@ -14,18 +14,14 @@
             </view>
         </view> -->
     <block wx:if="{{orderDetail.order}}">
+     <view class="list-title">已取消</view>
       <view class="address-sec">
-       <view class="list-title">商品信息</view>
-        <view class="icon-box">
-        
-          <image class="icon" src="/images/order-details/icon-address.png"></image>
-        </view>
         <view class="right-box">
-          <view class="name-tel">
-          {{orderDetail.order.name}} 
+          <view class="text">
+         自提点：{{orderDetail.order.name}} 
           {{orderDetail.order.tel}}</view>
           <view class="text">
-            {{orderDetail.order.address}}
+            提货地点: {{orderDetail.order.address}}
           </view>
         </view>
       </view>
@@ -57,12 +53,16 @@
     </form>
   </view>
   <view class="peisong-way">
+   <view class="row-box">
+      <view class="row-label">订单编号：{{orderDetail.order.orderid}}</view>
+      <view class="right-text">共计{{orderDetail.num}}件商品</view>
+    </view>
     <view class="row-box">
       <view class="row-label">配送方式</view>
       <view class="right-text">到店自提</view>
     </view>
     <view class="row-box">
-      <view class="row-label">留言</view>
+      <view class="row-label">备注：</view>
       <view class="right-text">
         <view class="liuyan">{{status}}</view>
       </view>

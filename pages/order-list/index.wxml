@@ -17,7 +17,7 @@
           <view class="status" wx:if="{{item.is_pay==0}}">未付款</view>
            <view class="status" wx:if="{{item.is_pay==1}}">待提货</view>
             <view class="status" wx:if="{{item.is_pay==2}}">已完成</view>
-             <view class="status" wx:if="{{item.is_pay==3}}">取消</view>
+             <view class="status" wx:if="{{item.is_pay==3}}">已取消</view>
         </view>
       </view>
       <view>
