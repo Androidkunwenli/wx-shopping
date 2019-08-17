@@ -146,7 +146,6 @@ Page({
         wx.hideLoading();
         if (res.data.key == 200) {
           var data = res.data.data;
-          console.log("===data===" + JSON.stringify(data));
           that.setData({
             orderList: data.orders,
             goodsMap: data.goodsMap,
