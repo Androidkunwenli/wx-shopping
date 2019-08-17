@@ -146,7 +146,7 @@ Page({
                       icon: 'success',
                       duration: 2000
                     })
-                    wx.reLaunch({
+                    wx.redirectTo({
                       url: "/pages/order-list/index"
                     });
                   },
@@ -156,6 +156,9 @@ Page({
                       icon: 'success',
                       duration: 2000
                     })
+                    wx.redirectTo({
+                      url: "/pages/order-list/index"
+                    });
                   }
                 })
               }

@@ -16,8 +16,8 @@
     <view class="text">暂无订单</view>
   </view>
   <view class="order-list" hidden="{{orderList ? false : true}}">
-    <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}">
-      <view class="goods-info" bindtap="orderDetail" data-id="{{item.orderid}}">
+    <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}" bindtap="orderDetail" data-id="{{item.orderid}}">
+      <view class="goods-info">
         <view class="goods-des">
           <view class="dingdan">订单号：{{item.orderid}} </view>
           <view class="status">状态：{{item.is_pay}}</view>
@@ -49,7 +49,7 @@
       <view class="price-box">
         <view class="total-price">合计：¥ {{item.pay_price}}</view>
         <!-- hidden="{{item.is_pay==0? fslse : true}}" -->
-        <view class="btn topay-btn" bindtap="cancelOrderTap" data-id="{{item.orderid}}">确认出货</view>
+        <view class="btn topay-btn" catchtap="cancelOrderTap" data-id="{{item.orderid}}">确认出货</view>
       </view>
     </view>
   </view>
