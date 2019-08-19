@@ -44,4 +44,5 @@
     <view class="canvas-box">
       <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
     </view>
+     <button open-type='contact' class="lianxi">联系客服</button>
 </view>

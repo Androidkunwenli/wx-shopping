@@ -109,3 +109,7 @@
   top: 999999rpx;
   left: 0;
 }
+.lianxi{
+  width: 80%;
+
+}
