@@ -53,6 +53,8 @@ Page({
               that.onShow();
             }
           })
+        } else if (res.cancel) {
+          wx.hideLoading();
         }
       }
     })
