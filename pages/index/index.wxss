@@ -78,14 +78,14 @@
 
 .goods-box {
   width: 100%;
-  height: 635rpx;
+  height: 455rpx;
   background-color: #fff;
   overflow: hidden;
   margin: 20rpx 0;
 }
 
 .img_div {
-  width: 98%;
+  width: 43%;
   height: 329rpx;
   opacity: 0.8;
   z-index: 999;
@@ -108,28 +108,25 @@
 }
 
 .goods-box .img-box {
-  width: 100%;
+  width:43%;
   height: 339rpx;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
+  margin-left: 10rpx;
 }
 
 .goods-box .img-box .image {
   width: 95%;
   height: 90%;
-  border-radius: 30rpx;
-  border: 10rpx solid#FFA500;
+  border-radius: 15rpx;
+  border: 6rpx solid#FFA500;
 }
 
 .txt_con {
-  margin-left: 25rpx;
 }
 .yushou{
-  width:58%;
   font-size:26rpx;
   color:#e64340;
   letter-spacing: 1rpx;
+  margin: 10rpx 0;
 }
 
 .tihuo {
@@ -144,11 +141,6 @@
 }
 .sale{
  font-size:26rpx;
-    text-align: right;
-    width: 42%;
-    padding-right: 35rpx;
-
-
 }
 
 .salenum {
@@ -159,16 +151,17 @@
   display: flex;
   justify-self: left;
   position: relative;
+  margin-top: 33rpx;
 }
 
 .carimg {
   width: 90rpx;
   height: 90rpx;
-  margin-right: 70rpx;
+  margin-right: 10rpx;
   position: absolute;
   z-index: 999;
   right: 0;
-  top: -13rpx;
+  top: -33rpx;
   font-size: 60rpx;
   color: red;
   border: 3rpx solid red;
@@ -211,15 +204,15 @@
 }
 
 .goods-box .goods-title {
-  width: 650rpx;
   text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
   color: #4d4c4c;
   font-weight: 600;
-  font-size: 35rpx;
+  font-size: 28rpx;
   letter-spacing: 2rpx;
-  margin: 0 0 10rpx 0;
+  margin: 0 10rpx 10rpx 0;
+word-break: break-all;
+height: 120rpx;
 }
 
 .goods-box .goods-price {
@@ -227,7 +220,6 @@
   overflow: hidden;
   color: red;
   font-weight:600;
-  margin: 15rpx 0 0 0;
   font-size: 35rpx;
 }
 
@@ -462,4 +454,13 @@
   color:#FFA500;
   padding: 0 10rpx;
 
+}
+.btn{
+  display: flex;
+    justify-content: space-around;
+    margin-top: 20rpx;
+
+}
+.txt_con{
+  width: 50%;
 }
