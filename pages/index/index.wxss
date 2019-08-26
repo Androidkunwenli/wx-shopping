@@ -90,7 +90,7 @@
   opacity: 0.8;
   z-index: 999;
   position:absolute;
-  background:#313131 url(https://www.puyuanjingxuan.com/img/wx/timg.png) no-repeat  center center;
+  background:#686767 url(https://www.puyuanjingxuan.com/img/wx/timg.png) no-repeat  center center;
   background-size: 420rpx 350rpx;
   border-radius: 30rpx;
   display: block;}

@@ -1,7 +1,7 @@
 App({
   config: {
-   url: "https://www.puyuanjingxuan.com",
-    //url: "http://localhost:81",
+   //url: "https://www.puyuanjingxuan.com",
+    url: "http://localhost:81",
     version: "1.0",
     userId: "",
     userInfo: {},
