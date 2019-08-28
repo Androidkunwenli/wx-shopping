@@ -20,12 +20,14 @@
 
 .image {
   width: 100%;
-  height: 425rpx;
+  height: 755rpx;
 }
 
 .swiper-container {
   width: 100%;
   position: relative;
+  margin-bottom: -10rpx;
+
 }
 
 .swiper-container .dots {
