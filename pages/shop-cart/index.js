@@ -248,10 +248,10 @@ Page({
         title: '暂无选择商品!',
         icon: 'none',
         mask: true
-        });
+      });
       return;
     }
-     wx.navigateTo({
+    wx.navigateTo({
       url: "/pages/to-pay-order/index"
     })
   },

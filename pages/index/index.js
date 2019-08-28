@@ -114,20 +114,21 @@ Page({
     that.setData({
       activeCategoryId: 0
     });
-    // 获取购物车数据
-    wx.getStorage({
-      key: 'shopCarInfo',
-      success: function(res) {
-        that.setData({
-          shopCarInfo: res.data,
-        });
-      }
-    })
+
   },
   onShow: function() {
     var that = this;
     var userInfo = wx.getStorageSync("userInfo")
     if (userInfo) {
+      // 获取购物车数据
+      wx.getStorage({
+        key: 'shopCarInfo',
+        success: function(res) {
+          that.setData({
+            shopCarInfo: res.data,
+          });
+        }
+      });
       wx.request({
         url: app.config.url + "/apipoint/selectpoint",
         method: "POST",
