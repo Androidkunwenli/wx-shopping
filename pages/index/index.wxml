@@ -13,8 +13,9 @@
       <view class="weui-search-bar">
         <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
-            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{searchConfirm.value}}" bindinput='SearchInput' bindconfirm="searchConfirm" />
+          
+            <input type="text" class="weui-search-bar__input" placeholder="输入您喜欢的商品" value="{{searchConfirm.value}}" bindinput='SearchInput' bindconfirm="searchConfirm" />
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
           </view>
         </view>
       </view>
