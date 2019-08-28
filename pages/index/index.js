@@ -114,38 +114,46 @@ Page({
     that.setData({
       activeCategoryId: 0
     });
-    // 获取购物车数据
-    wx.getStorage({
-      key: 'shopCarInfo',
-      success: function(res) {
-        that.setData({
-          shopCarInfo: res.data,
-        });
-      }
-    })
+
   },
   onShow: function() {
     var that = this;
-    wx.request({
-      url: app.config.url + "/apipoint/selectpoint",
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      data: {
-        userid: wx.getStorageSync("id"),
-      },
-      success: (res) => {
-        if (res.data.key == 200) {
-          wx.hideLoading()
+    var userInfo = wx.getStorageSync("userInfo")
+    if (userInfo) {
+      // 获取购物车数据
+      wx.getStorage({
+        key: 'shopCarInfo',
+        success: function(res) {
           that.setData({
-            curAddressData: res.data.data
-          })
-        } else {
-          wx.hideLoading()
+            shopCarInfo: res.data,
+          });
         }
-      }
-    })
+      });
+      wx.request({
+        url: app.config.url + "/apipoint/selectpoint",
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        data: {
+          userid: wx.getStorageSync("id"),
+        },
+        success: (res) => {
+          if (res.data.key == 200) {
+            wx.hideLoading()
+            that.setData({
+              curAddressData: res.data.data
+            })
+          } else {
+            wx.hideLoading()
+          }
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
+      })
+    }
   },
   //请求数据列表
   getGoodsList: function(categoryId) {
