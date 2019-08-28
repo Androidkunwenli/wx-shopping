@@ -126,26 +126,33 @@ Page({
   },
   onShow: function() {
     var that = this;
-    wx.request({
-      url: app.config.url + "/apipoint/selectpoint",
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      data: {
-        userid: wx.getStorageSync("id"),
-      },
-      success: (res) => {
-        if (res.data.key == 200) {
-          wx.hideLoading()
-          that.setData({
-            curAddressData: res.data.data
-          })
-        } else {
-          wx.hideLoading()
+    var userInfo = wx.getStorageSync("userInfo")
+    if (userInfo) {
+      wx.request({
+        url: app.config.url + "/apipoint/selectpoint",
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        data: {
+          userid: wx.getStorageSync("id"),
+        },
+        success: (res) => {
+          if (res.data.key == 200) {
+            wx.hideLoading()
+            that.setData({
+              curAddressData: res.data.data
+            })
+          } else {
+            wx.hideLoading()
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/login/login?type=1'
+      })
+    }
   },
   //请求数据列表
   getGoodsList: function(categoryId) {
