@@ -4,7 +4,7 @@
 .container {
   background-color: #f2f2f2;
   min-height: 100%;
-  margin-top: 26%;
+  margin-top: 23%;
 }
 
 .swiper-container {
@@ -60,11 +60,13 @@
 }
 
 .type-navbar-item {
+  font-size: 28rpx;
   border-bottom: 4rpx solid #fff;
 }
 
 .type-item-on {
-  border-bottom: 4rpx solid #e64340;
+    color: #FFA500;
+  border-bottom: 4rpx solid #FFA500;
 }
 
 .goods-container {
@@ -78,10 +80,9 @@
 
 .goods-box {
   width: 100%;
-  height: 455rpx;
   background-color: #fff;
   overflow: hidden;
-  margin: 20rpx 0;
+  margin: 10rpx 0 0 0;
 }
 
 .img_div {
@@ -110,7 +111,6 @@
 .goods-box .img-box {
   width:43%;
   height: 339rpx;
-  margin-left: 10rpx;
 }
 
 .goods-box .img-box .image {
@@ -126,7 +126,7 @@
   font-size:26rpx;
   color:#e64340;
   letter-spacing: 1rpx;
-  margin: 10rpx 0;
+  margin: 5rpx 0;
 }
 
 .tihuo {
@@ -207,9 +207,8 @@
   text-overflow: ellipsis;
   overflow: hidden;
   color: #4d4c4c;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 28rpx;
-  letter-spacing: 2rpx;
   margin: 0 10rpx 10rpx 0;
 word-break: break-all;
 height: 120rpx;
@@ -220,7 +219,7 @@ height: 120rpx;
   overflow: hidden;
   color: red;
   font-weight:600;
-  font-size: 35rpx;
+  font-size: 50rpx;
 }
 
 .goods-price text {
@@ -332,7 +331,7 @@ height: 120rpx;
 }
 
 .Title {
-  height: 100rpx;
+  height: 85rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -385,8 +384,8 @@ height: 120rpx;
 
 .weui-icon-search_in-box {
   position: absolute;
-  left: 10px;
-  top: 7px;
+  right: 25rpx;
+  top: 8px;
 }
 
 .weui-search-bar__form {
@@ -401,7 +400,7 @@ height: 120rpx;
 
 .weui-search-bar__box {
   position: relative;
-  padding-left: 30px;
+  padding-left: 15px;
   padding-right: 30px;
   width: 100%;
   box-sizing: border-box;
@@ -449,7 +448,6 @@ height: 120rpx;
   color: #999;
 }
 .supplier_ico{
-  width: 20rpx;
   height: 20rpx;
   color:#FFA500;
   padding: 0 10rpx;
@@ -458,7 +456,6 @@ height: 120rpx;
 .btn{
   display: flex;
     justify-content: space-around;
-    margin-top: 20rpx;
 
 }
 .txt_con{
