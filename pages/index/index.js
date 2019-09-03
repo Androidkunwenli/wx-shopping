@@ -149,11 +149,7 @@ Page({
           }
         }
       })
-    } else {
-      wx.navigateTo({
-        url: '/pages/login/login?type=1'
-      })
-    }
+    } 
   },
   //请求数据列表
   getGoodsList: function(categoryId) {

@@ -1,7 +1,9 @@
 <view class="container">
   <view class="userinfo">
     <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+    <image wx:if="{{!userInfo && !userInfo.avatarUrl}}" class="userinfo-avatar" src="/images/image_logo.jpg" mode="aspectFill" background-size="cover"></image>
     <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+    <button class='bottom' bindtap="login" wx:if="{{!userInfo && !userInfo.avatarUrl}}">登陆/注册</button>
   </view>
   <view style="height:20rpx;background: #f1f1f1;width:100%;"></view>
   <view class="my-order">
@@ -40,9 +42,9 @@
       </navigator> -->
     </view>
   </view>
-  <image bindtap="previewImg" mode="scaleToFill" style="width: 320rpx;height: 320rpx;background:#fff;" src="{{imagePath}}"></image>
-    <view class="canvas-box">
-      <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
-    </view>
-     <button open-type='contact' class="lianxi">联系客服</button>
+  <image wx:if='{{imagePath}}' bindtap="previewImg" mode="scaleToFill" style="width: 320rpx;height: 320rpx;background:#fff;" src="{{imagePath}}"></image>
+  <view class="canvas-box">
+    <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+  </view>
+  <button open-type='contact' class="lianxi">联系客服</button>
 </view>

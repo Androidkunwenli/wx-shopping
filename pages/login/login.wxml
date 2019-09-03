@@ -6,8 +6,13 @@
     <view>申请获取以下权限</view>
     <text>获得你的公开信息(昵称，头像等)</text>
   </view>
+  <view>
   <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGetUserInfo">
     授权登录
   </button>
+  <button class='bottom' bindtap="btClose">
+    拒绝
+  </button>
+  </view>
 </view>
 <view wx:else>请升级微信版本</view>

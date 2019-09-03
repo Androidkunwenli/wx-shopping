@@ -29,7 +29,11 @@ Page({
   onShow() {
     this.getUserInfo();
   },
-
+  login: function() {
+    wx.navigateTo({
+      url: '/pages/login/login?type=1'
+    })
+  },
   getUserInfo: function(cb) {
     var that = this
     var userInfo = wx.getStorageSync("userInfo")
@@ -44,10 +48,6 @@ Page({
       setTimeout(() => {
         this.canvasToTempImage();
       }, 500);
-    } else {
-      wx.navigateTo({
-        url: '/pages/login/login?type=1'
-      })
     }
   },
   //获取临时缓存照片路径，存入data中
@@ -79,7 +79,7 @@ Page({
   },
   order1: function() {
     wx.navigateTo({
-       // url: '/pages/take-list/index?id=1',
+      // url: '/pages/take-list/index?id=1',
       url: '/pages/order-list/index?id=0',
     })
   },
