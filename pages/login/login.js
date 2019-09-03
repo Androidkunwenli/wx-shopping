@@ -88,6 +88,8 @@ Page({
           })
         }
       })
+    } else {
+      wx.hideLoading();
     }
   },
   btClose: function() {

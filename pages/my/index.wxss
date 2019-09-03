@@ -67,7 +67,6 @@
   letter-spacing: 3rpx;
   font-size: 30rpx;
   padding-left: 50rpx;
-
 }
 
 .tihuo_icon {
@@ -109,14 +108,16 @@
   top: 999999rpx;
   left: 0;
 }
-.lianxi{
-  width: 80%;
 
+.lianxi {
+  width: 80%;
 }
 
 .bottom {
-  border-radius: 80rpx;
-  margin: 70rpx 50rpx;
-  font-size: 35rpx;
-  background-color: 
+  border-radius: 20rpx;
+  margin: 55rpx 20rpx;
+  border: 3rpx solid white;
+  justify-content: left;
+  background-color: #ffa500;
+  color: white;
 }
