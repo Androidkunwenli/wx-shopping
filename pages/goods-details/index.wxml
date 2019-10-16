@@ -1,5 +1,7 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
+  <canvas style="position: absolute; top: -1000px; left: -1000px; width: 640px; height: 640px; background: #000" canvas-id="canvas"></canvas>
+
   <view class="swiper-container">
     <view class='img_div' style="display:{{display}}"></view>
     <image src="{{avatarUrl}}" class="image" mode="aspectFit" lazy-load="true" />

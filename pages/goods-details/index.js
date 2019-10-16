@@ -5,6 +5,7 @@ var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
   data: {
+    canvasHidden: false,
     currentData: 0,
     autoplay: true,
     interval: 3000,
@@ -19,7 +20,6 @@ Page({
     buyNumber: 0,
     buyNumMin: 1,
     buyNumMax: 0,
-
     propertyChildIds: "",
     propertyChildNames: "",
     canSubmit: false, //  选中规格尺寸时候是否允许加入购物车
@@ -30,7 +30,7 @@ Page({
     countDownHour: 0,
     countDownMinute: 0,
     countDownSecond: 0,
-
+    shareImage: "",
   },
   onLoad: function(e) {
     var that = this;
@@ -90,6 +90,20 @@ Page({
           })
           WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
           that.onShowTime(goodsDetail.endtime);
+          wx.getImageInfo({
+            src: goodsDetail.picture, // 这里填写网络图片路径 
+            success: (res) => {
+              setTimeout(function() {
+                // 这个是我封装的裁剪图片方法（下面将会说到）
+                clipImage(res.path, res.width, res.height, goodsDetail.price, goodsDetail.sale, goodsDetail.surplus, (img) => {
+                  console.log("图片-" + img); // img为最终裁剪后生成的图片路径，我们可以用来做为转发封面图
+                  //截图赋值
+                  that.data.shareImage = img;
+                });
+              }, 600)
+
+            }
+          });
         } else {
           wx.navigateBack({})
         }
@@ -112,7 +126,51 @@ Page({
         }
       }
     })
+    /* 裁剪封面，
+       src为本地图片路径或临时文件路径，
+       imgW为原图宽度，
+       imgH为原图高度，
+       cb为裁剪成功后的回调函数
+    */
+    const clipImage = (src, imgW, imgH, price, sale, total, cb) => {
+      // ‘canvas’为前面创建的canvas标签的canvas-id属性值
+      let ctx = wx.createCanvasContext('canvas');
+      // 将图片绘制到画布
+      ctx.font = 'normal 11px sans-serif';
+      ctx.drawImage(src, 0, -80, 640, 640)
+      ctx.setFillStyle('#FFA500')
+      ctx.fillRect(0, 392, 640, 120)
+      ctx.setFontSize(35)
+      ctx.setFillStyle('white')
+      ctx.fillText('¥ ', 20, 445)
+      ctx.setFontSize(50)
+      ctx.fillText(price, 45, 445)
+      ctx.setFontSize(40)
+      ctx.fillText("已售" + sale + "份/剩余" + total + "份", 20, 492)
+      // ctx.fillText("距结束", 560, 265)
+      // ctx.fillText(that.data.countDownHour + ":" + that.data.countDownMinute + ":" + that.data.countDownSecond, 555, 295)
+      // draw()必须要用到，并且需要在绘制成功后导出图片
+      ctx.draw(false, () => {
+        setTimeout(() => {
+          //  导出图片
+          wx.canvasToTempFilePath({
+            width: 640,
+            height: 512,
+            destWidth: 640,
+            destHeight: 512,
+            canvasId: 'canvas',
+            fileType: 'jpg',
+            success: (res) => {
+              // res.tempFilePath为导出的图片路径
+              typeof cb == 'function' && cb(res.tempFilePath);
+            }
+          })
+        }, 0);
+      })
+    }
+
   },
+
   goHome: function() {
     wx.switchTab({
       url: "/pages/index/index"
@@ -240,16 +298,21 @@ Page({
     buyNowInfo.shopList.push(shopCarMap);
     return buyNowInfo;
   },
+  //分享
   onShareAppMessage: function() {
     console.log("商品ID = " + this.data.goodsDetail.goodsid)
+    console.log("图片地址 = " + this.data.shareImage)
     return {
       title: this.data.goodsDetail.name,
       path: '/pages/goods-details/index?id=' + this.data.goodsDetail.goodsid,
+      imageUrl: this.data.shareImage,
       success: function(res) {
+        console.log("分享成功")
         // 转发成功
       },
       fail: function(res) {
         // 转发失败
+        console.log("分享失败")
       }
     }
   },
@@ -273,7 +336,6 @@ Page({
     }
   },
   onShowTime: function(endtime) {
-    console.log(endtime)
     var totalSecond = endtime / 1000 - new Date().getTime() / 1000;
     var interval = setInterval(function() {
       // 秒数
@@ -294,11 +356,16 @@ Page({
       var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
       var secStr = sec.toString();
       if (secStr.length == 1) secStr = '0' + secStr;
+
+      this.data.countDownDay = parseInt(dayStr);
+      this.data.countDownHour = parseInt(hrStr);
+      this.data.countDownMinute = parseInt(minStr);
+      this.data.countDownSecond = parseInt(secStr);
       this.setData({
-        countDownDay: parseInt(dayStr),
-        countDownHour: parseInt(hrStr),
-        countDownMinute: parseInt(minStr),
-        countDownSecond: parseInt(secStr),
+        countDownDay: this.data.countDownDay,
+        countDownHour: this.data.countDownHour,
+        countDownMinute: this.data.countDownMinute,
+        countDownSecond: this.data.countDownSecond,
       });
       totalSecond--;
       if (totalSecond < 0) {

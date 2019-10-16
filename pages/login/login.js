@@ -70,6 +70,7 @@ Page({
                     wx.setStorageSync('skey', res.data.data.skey);
                     wx.setStorageSync('id', res.data.data.id);
                     wx.setStorageSync('openid', res.data.data.openid);
+                    console.log("===登录===" + JSON.stringify(res.data));
                     if (that.data.type == 1) {
                       wx.navigateBack({})
                     } else {

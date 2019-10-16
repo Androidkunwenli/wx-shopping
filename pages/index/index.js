@@ -4,6 +4,7 @@
 var app = getApp()
 Page({
   data: {
+    pointid: "",
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
@@ -110,6 +111,27 @@ Page({
   },
   onLoad: function() {
     var that = this
+    wx.request({
+      url: app.config.url + "/apipoint/selectpoint",
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: {
+        userid: wx.getStorageSync("id"),
+      },
+      success: (res) => {
+        if (res.data.key == 200) {
+          wx.hideLoading()
+          that.setData({
+            curAddressData: res.data.data
+          })
+          that.data.pointid = res.data.data.pointid;
+        } else {
+          wx.hideLoading()
+        }
+      }
+    })
     that.getGoodsList(0);
     that.setData({
       activeCategoryId: 0
@@ -129,27 +151,7 @@ Page({
           });
         }
       });
-      wx.request({
-        url: app.config.url + "/apipoint/selectpoint",
-        method: "POST",
-        header: {
-          'content-type': 'application/x-www-form-urlencoded' // 默认值
-        },
-        data: {
-          userid: wx.getStorageSync("id"),
-        },
-        success: (res) => {
-          if (res.data.key == 200) {
-            wx.hideLoading()
-            that.setData({
-              curAddressData: res.data.data
-            })
-          } else {
-            wx.hideLoading()
-          }
-        }
-      })
-    } 
+    }
   },
   //请求数据列表
   getGoodsList: function(categoryId) {
@@ -162,7 +164,8 @@ Page({
       url: app.config.url + '/apigoods/list',
       data: {
         type: categoryId,
-        search: that.data.searchStr
+        search: that.data.searchStr,
+        pointid: that.data.pointid
       },
       success: function(res) {
         wx.hideNavigationBarLoading() //完成停止加载

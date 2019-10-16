@@ -22,7 +22,8 @@ Page({
       title: '加载中..',
       mask: true,
     })
-    var id = e.currentTarget.dataset.id;
+    var pointid = e.currentTarget.dataset.id;
+    var userid = wx.getStorageSync("id")
     wx.request({
       url: app.config.url + '/apipoint/addpoint',
       method: "POST",
@@ -30,8 +31,8 @@ Page({
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       data: {
-        userid: wx.getStorageSync("id"),
-        pointid: id,
+        userid: userid,
+        pointid: pointid,
       },
       success: (res) => {
         wx.hideLoading()
