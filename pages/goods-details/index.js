@@ -64,6 +64,9 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
+      fail: function(res) {
+        wx.navigateBack({})
+      },
       success: function(res) {
         wx.hideLoading()
         if (res.data.key == 200) {
@@ -90,15 +93,38 @@ Page({
           })
           WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
           that.onShowTime(goodsDetail.endtime);
+          wx.showLoading({
+            title: '加载中..',
+            mask: true,
+          })
           wx.getImageInfo({
             src: goodsDetail.picture, // 这里填写网络图片路径 
             success: (res) => {
               setTimeout(function() {
                 // 这个是我封装的裁剪图片方法（下面将会说到）
                 clipImage(res.path, res.width, res.height, goodsDetail.price, goodsDetail.sale, goodsDetail.surplus, (img) => {
-                  console.log("图片-" + img); // img为最终裁剪后生成的图片路径，我们可以用来做为转发封面图
-                  //截图赋值
-                  that.data.shareImage = img;
+                  wx.uploadFile({
+                    url: app.config.url + '/upload ',
+                    filePath: img,
+                    name: "file",
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    formData: {
+                      'goodsid': goodsDetail.goodsid //其他额外的formdata，可不写
+                    },
+                    success: function(res) {
+                      var data = JSON.parse(res.data)
+                      if (data.code == 200) {
+                        //截图赋值
+                        that.data.shareImage = data.msg;
+                        wx.hideLoading()
+                      }
+                    },
+                    fail: function(res) {
+                      wx.hideLoading()
+                    },
+                  })
                 });
               }, 600)
 
@@ -300,8 +326,6 @@ Page({
   },
   //分享
   onShareAppMessage: function() {
-    console.log("商品ID = " + this.data.goodsDetail.goodsid)
-    console.log("图片地址 = " + this.data.shareImage)
     return {
       title: this.data.goodsDetail.name,
       path: '/pages/goods-details/index?id=' + this.data.goodsDetail.goodsid,

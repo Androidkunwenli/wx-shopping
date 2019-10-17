@@ -109,7 +109,8 @@ Page({
     // console.log('e.detail.scrollTop:'+e.detail.scrollTop) ;
     // console.log('scrollTop:'+scrollTop)
   },
-  onLoad: function() {
+  onShow: function() {
+    var that = this;
     var that = this
     wx.request({
       url: app.config.url + "/apipoint/selectpoint",
@@ -136,10 +137,6 @@ Page({
     that.setData({
       activeCategoryId: 0
     });
-
-  },
-  onShow: function() {
-    var that = this;
     var userInfo = wx.getStorageSync("userInfo")
     if (userInfo) {
       // 获取购物车数据
