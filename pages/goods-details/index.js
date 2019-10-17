@@ -93,41 +93,34 @@ Page({
           })
           WxParse.wxParse('article', 'html', goodsDetail.detail, that, 5);
           that.onShowTime(goodsDetail.endtime);
-          wx.showLoading({
-            title: '加载中..',
-            mask: true,
-          })
           wx.getImageInfo({
             src: goodsDetail.picture, // 这里填写网络图片路径 
             success: (res) => {
-              setTimeout(function() {
-                // 这个是我封装的裁剪图片方法（下面将会说到）
-                clipImage(res.path, res.width, res.height, goodsDetail.price, goodsDetail.sale, goodsDetail.surplus, (img) => {
-                  wx.uploadFile({
-                    url: app.config.url + '/upload ',
-                    filePath: img,
-                    name: "file",
-                    header: {
-                      "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    formData: {
-                      'goodsid': goodsDetail.goodsid //其他额外的formdata，可不写
-                    },
-                    success: function(res) {
-                      var data = JSON.parse(res.data)
-                      if (data.code == 200) {
-                        //截图赋值
-                        that.data.shareImage = data.msg;
-                        wx.hideLoading()
-                      }
-                    },
-                    fail: function(res) {
-                      wx.hideLoading()
-                    },
-                  })
-                });
-              }, 600)
-
+              // 这个是我封装的裁剪图片方法（下面将会说到）
+              clipImage(res.path, res.width, res.height, goodsDetail.price, goodsDetail.sale, goodsDetail.surplus, (img) => {
+                console.log("图片 ：" + img)
+                wx.uploadFile({
+                  url: app.config.url + '/upload ',
+                  filePath: img,
+                  name: "uploadfiles",
+                  header: {
+                    'Content-Type': 'multipart/form-data',
+                  },
+                  formData: {
+                    'goodsid': goodsDetail.goodsid //其他额外的formdata，可不写
+                  },
+                  success: function(res) {
+                    console.log("数据"+res.data)
+                    var str = res.data.replace(/\ +/g, ""); //去掉空格
+                    str = str.replace(/[\r\n]/g, ""); //去掉回车换行
+                    var data = JSON.parse(str)
+                    if (data.code == 200) {
+                      //截图赋值
+                      that.data.shareImage = data.msg;
+                    }
+                  },
+                })
+              });
             }
           });
         } else {
